@@ -78,7 +78,7 @@ page {
   font-size: 18px;
   line-height: 40px;
   border-radius: 50%;
-  background-color: blue;
+  background-color: #378ae8;
 }
 
 .cid_box .btn .name {
@@ -98,45 +98,56 @@ page {
 }
 
 .cid_box .dress icon {
+  background-color: #e33c47;
 }
 
 .cid_box .man icon {
   line-height: 43px;
+  background-color: #49486f;
 }
 
 .cid_box .underwear icon {
   font-size: 21px;
+  background-color: #874cc9;
 }
 
 .cid_box .digital icon {
   line-height: 42px;
+  background-color: #b68c3a;
 }
 
 .cid_box .food icon {
   line-height: 43px;
+  background-color: #30be76;
 }
 
 .cid_box .beauty icon {
   font-size: 21px;
   line-height: 45px;
+  background-color:#d73764;
 }
 
 .cid_box .infant icon {
   font-size: 22px;
+  background-color: #2fc4cd;
 }
 
 .cid_box .shoes icon {
+  background-color: #30b8eb;
 }
 
 .cid_box .household icon {
   font-size: 21px;
   line-height: 45px;
+   background-color: #e19b49;
 }
 
 .cid_box .sport icon {
   font-size: 22px;
+  background-color: #5a6cf6;
 }
 
 .cid_box .else icon {
   font-size: 22px;
+  background-color: #c76a4a;
 }
