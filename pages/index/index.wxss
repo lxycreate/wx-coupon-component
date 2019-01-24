@@ -44,7 +44,7 @@ page {
 
 .scroll_box {
   position: relative;
-  height: calc(100% - 60px);
+  height: calc(100% - 80px);
 }
 
 /* 分类   start */
@@ -199,13 +199,13 @@ page {
 
 .goods_list .goods_item .goods_container .img_box {
   display: block;
-  padding: 5px;
+  padding: 6px;
 }
 
 .goods_list .goods_item .goods_container .img_box image {
   display: block;
-  width: 120px;
-  height: 120px;
+  width: 118px;
+  height: 118px;
 }
 
 .goods_list .goods_item .goods_container .text_box {

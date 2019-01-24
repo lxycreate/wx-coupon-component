@@ -21,25 +21,21 @@
     <text class="title">商品推荐</text>
     <!-- 商品区域   start -->
     <view class="goods_list">
-
-      <!-- 商品   start -->
-      <view class="goods">
-
+      <view class="goods" wx:for="{{goods_list}}" wx:key="">
         <view class="goods_item">
+          <!-- 图 -->
           <view class="goods_container">
             <view class="img_box">
-              <image src="../images/test.jpg"></image>
+              <image src="{{item.goods_pic}}"></image>
             </view>
           </view>
-          <!--  -->
+          <!-- 文 -->
           <view class="goods_container">
-            <!--  -->
             <view class="text_box">
-              <text class="goods_title">测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</text>
-              <!--  -->
+              <text class="goods_title">{{item.goods_title}}</text>
               <view class="price_sale">
-                <text class="price">原价￥100</text>
-                <text class="sale">销量 5000</text>
+                <text class="price">原价￥{{item.goods_price}}</text>
+                <text class="sale">销量 {{item.goods_sale}}</text>
               </view>
               <!-- <text class="dsr">评分 4.8</text> -->
               <!--  -->
@@ -47,368 +43,24 @@
                 <view class="box left">
                   <text>
                      <text class="the_title">券后</text>
-                  <text class="the_value">￥50</text>
+                  <text class="the_value">￥{{item.after_coupon}}</text>
                   </text>
                 </view>
                 <view class="box right">
                   <text>
                     <text class="the_title">领券</text>
-                  <text class="the_value">￥50</text>
+                  <text class="the_value">￥{{item.coupon_price}}</text>
                   </text>
                 </view>
               </view>
             </view>
-            <!--  -->
+            <!-- text_box  end -->
           </view>
-          <!--  -->
+          <!--第二container  end-->
         </view>
-
       </view>
-      <!-- 商品   end -->
-      <!-- 商品   start -->
-      <view class="goods">
 
-        <view class="goods_item">
-          <view class="goods_container">
-            <view class="img_box">
-              <image src="../images/test.jpg"></image>
-            </view>
-          </view>
-          <!--  -->
-          <view class="goods_container">
-            <!--  -->
-            <view class="text_box">
-              <text class="goods_title">测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</text>
-              <!--  -->
-              <view class="price_sale">
-                <text class="price">原价￥100</text>
-                <text class="sale">销量 5000</text>
-              </view>
-              <!-- <text class="dsr">评分 4.8</text> -->
-              <!--  -->
-              <view class="price_coupon">
-                <view class="box left">
-                  <text>
-                     <text class="the_title">券后</text>
-                  <text class="the_value">￥50</text>
-                  </text>
-                </view>
-                <view class="box right">
-                  <text>
-                    <text class="the_title">领券</text>
-                  <text class="the_value">￥50</text>
-                  </text>
-                </view>
-              </view>
-            </view>
-            <!--  -->
-          </view>
-          <!--  -->
-        </view>
 
-      </view>
-      <!-- 商品   end -->
-      <!-- 商品   start -->
-      <view class="goods">
-
-        <view class="goods_item">
-          <view class="goods_container">
-            <view class="img_box">
-              <image src="../images/test.jpg"></image>
-            </view>
-          </view>
-          <!--  -->
-          <view class="goods_container">
-            <!--  -->
-            <view class="text_box">
-              <text class="goods_title">测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</text>
-              <!--  -->
-              <view class="price_sale">
-                <text class="price">原价￥100</text>
-                <text class="sale">销量 5000</text>
-              </view>
-              <!-- <text class="dsr">评分 4.8</text> -->
-              <!--  -->
-              <view class="price_coupon">
-                <view class="box left">
-                  <text>
-                     <text class="the_title">券后</text>
-                  <text class="the_value">￥50</text>
-                  </text>
-                </view>
-                <view class="box right">
-                  <text>
-                    <text class="the_title">领券</text>
-                  <text class="the_value">￥50</text>
-                  </text>
-                </view>
-              </view>
-            </view>
-            <!--  -->
-          </view>
-          <!--  -->
-        </view>
-
-      </view>
-      <!-- 商品   end -->
-      <!-- 商品   start -->
-      <view class="goods">
-
-        <view class="goods_item">
-          <view class="goods_container">
-            <view class="img_box">
-              <image src="../images/test.jpg"></image>
-            </view>
-          </view>
-          <!--  -->
-          <view class="goods_container">
-            <!--  -->
-            <view class="text_box">
-              <text class="goods_title">测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</text>
-              <!--  -->
-              <view class="price_sale">
-                <text class="price">原价￥100</text>
-                <text class="sale">销量 5000</text>
-              </view>
-              <!-- <text class="dsr">评分 4.8</text> -->
-              <!--  -->
-              <view class="price_coupon">
-                <view class="box left">
-                  <text>
-                     <text class="the_title">券后</text>
-                  <text class="the_value">￥50</text>
-                  </text>
-                </view>
-                <view class="box right">
-                  <text>
-                    <text class="the_title">领券</text>
-                  <text class="the_value">￥50</text>
-                  </text>
-                </view>
-              </view>
-            </view>
-            <!--  -->
-          </view>
-          <!--  -->
-        </view>
-
-      </view>
-      <!-- 商品   end -->
-      <!-- 商品   start -->
-      <view class="goods">
-
-        <view class="goods_item">
-          <view class="goods_container">
-            <view class="img_box">
-              <image src="../images/test.jpg"></image>
-            </view>
-          </view>
-          <!--  -->
-          <view class="goods_container">
-            <!--  -->
-            <view class="text_box">
-              <text class="goods_title">测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</text>
-              <!--  -->
-              <view class="price_sale">
-                <text class="price">原价￥100</text>
-                <text class="sale">销量 5000</text>
-              </view>
-              <!-- <text class="dsr">评分 4.8</text> -->
-              <!--  -->
-              <view class="price_coupon">
-                <view class="box left">
-                  <text>
-                     <text class="the_title">券后</text>
-                  <text class="the_value">￥50</text>
-                  </text>
-                </view>
-                <view class="box right">
-                  <text>
-                    <text class="the_title">领券</text>
-                  <text class="the_value">￥50</text>
-                  </text>
-                </view>
-              </view>
-            </view>
-            <!--  -->
-          </view>
-          <!--  -->
-        </view>
-
-      </view>
-      <!-- 商品   end -->
-      <!-- 商品   start -->
-      <view class="goods">
-
-        <view class="goods_item">
-          <view class="goods_container">
-            <view class="img_box">
-              <image src="../images/test.jpg"></image>
-            </view>
-          </view>
-          <!--  -->
-          <view class="goods_container">
-            <!--  -->
-            <view class="text_box">
-              <text class="goods_title">测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</text>
-              <!--  -->
-              <view class="price_sale">
-                <text class="price">原价￥100</text>
-                <text class="sale">销量 5000</text>
-              </view>
-              <!-- <text class="dsr">评分 4.8</text> -->
-              <!--  -->
-              <view class="price_coupon">
-                <view class="box left">
-                  <text>
-                     <text class="the_title">券后</text>
-                  <text class="the_value">￥50</text>
-                  </text>
-                </view>
-                <view class="box right">
-                  <text>
-                    <text class="the_title">领券</text>
-                  <text class="the_value">￥50</text>
-                  </text>
-                </view>
-              </view>
-            </view>
-            <!--  -->
-          </view>
-          <!--  -->
-        </view>
-
-      </view>
-      <!-- 商品   end -->
-      <!-- 商品   start -->
-      <view class="goods">
-
-        <view class="goods_item">
-          <view class="goods_container">
-            <view class="img_box">
-              <image src="../images/test.jpg"></image>
-            </view>
-          </view>
-          <!--  -->
-          <view class="goods_container">
-            <!--  -->
-            <view class="text_box">
-              <text class="goods_title">测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</text>
-              <!--  -->
-              <view class="price_sale">
-                <text class="price">原价￥100</text>
-                <text class="sale">销量 5000</text>
-              </view>
-              <!-- <text class="dsr">评分 4.8</text> -->
-              <!--  -->
-              <view class="price_coupon">
-                <view class="box left">
-                  <text>
-                     <text class="the_title">券后</text>
-                  <text class="the_value">￥50</text>
-                  </text>
-                </view>
-                <view class="box right">
-                  <text>
-                    <text class="the_title">领券</text>
-                  <text class="the_value">￥50</text>
-                  </text>
-                </view>
-              </view>
-            </view>
-            <!--  -->
-          </view>
-          <!--  -->
-        </view>
-
-      </view>
-      <!-- 商品   end -->
-      <!-- 商品   start -->
-      <view class="goods">
-
-        <view class="goods_item">
-          <view class="goods_container">
-            <view class="img_box">
-              <image src="../images/test.jpg"></image>
-            </view>
-          </view>
-          <!--  -->
-          <view class="goods_container">
-            <!--  -->
-            <view class="text_box">
-              <text class="goods_title">测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</text>
-              <!--  -->
-              <view class="price_sale">
-                <text class="price">原价￥100</text>
-                <text class="sale">销量 5000</text>
-              </view>
-              <!-- <text class="dsr">评分 4.8</text> -->
-              <!--  -->
-              <view class="price_coupon">
-                <view class="box left">
-                  <text>
-                     <text class="the_title">券后</text>
-                  <text class="the_value">￥50</text>
-                  </text>
-                </view>
-                <view class="box right">
-                  <text>
-                    <text class="the_title">领券</text>
-                  <text class="the_value">￥50</text>
-                  </text>
-                </view>
-              </view>
-            </view>
-            <!--  -->
-          </view>
-          <!--  -->
-        </view>
-
-      </view>
-      <!-- 商品   end -->
-      <!-- 商品   start -->
-      <view class="goods">
-
-        <view class="goods_item">
-          <view class="goods_container">
-            <view class="img_box">
-              <image src="../images/test.jpg"></image>
-            </view>
-          </view>
-          <!--  -->
-          <view class="goods_container">
-            <!--  -->
-            <view class="text_box">
-              <text class="goods_title">测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</text>
-              <!--  -->
-              <view class="price_sale">
-                <text class="price">原价￥100</text>
-                <text class="sale">销量 5000</text>
-              </view>
-              <!-- <text class="dsr">评分 4.8</text> -->
-              <!--  -->
-              <view class="price_coupon">
-                <view class="box left">
-                  <text>
-                     <text class="the_title">券后</text>
-                  <text class="the_value">￥50</text>
-                  </text>
-                </view>
-                <view class="box right">
-                  <text>
-                    <text class="the_title">领券</text>
-                  <text class="the_value">￥50</text>
-                  </text>
-                </view>
-              </view>
-            </view>
-            <!--  -->
-          </view>
-          <!--  -->
-        </view>
-
-      </view>
-      <!-- 商品   end -->
 
     </view>
     <!-- 商品区域  end -->
