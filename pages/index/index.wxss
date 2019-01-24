@@ -1,21 +1,142 @@
 /**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+@import "../images/iconfont.wxss";
+
+page {
+  height: 100%;
+  background-color: #f8f8f8;
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
+/* 头部   start */
+
+.header {
+  width: 100%;
+  height: 40px;
+}
+
+.header .search_box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header .search_box .search_input {
+  width: 95%;
+  margin: 5px auto auto auto;
+  height: 30px;
+  min-height: 0;
+  font-size: 14px;
+  outline: none;
+  border-radius: 8px;
+  background-color: #efefef;
+}
+
+/* 头部   end */
+
+.cid_box {
+  width: 100%;
+  height: auto;
+  margin-top: 5px;
+  text-align: left;
+  background-color: #fff;
+}
+
+.cid_box .icon_box {
+  width: 100%;
+  font-size: 0;
+  text-align: center;
+}
+
+.cid_box .cover {
+  display: inline-block;
+  width: 16.6%;
+  padding: 10px 0 0 0;
+  background-color: #fff;
+}
+
+.cid_box .btn {
+  width: 45px;
+  margin: auto;
+  padding: 0;
+  background-color: #fff;
+}
+
+.cid_box .btn::after {
+  border: none;
+}
+
+.cid_box .btn icon {
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: auto;
+  color: #fff;
+  font-size: 18px;
+  line-height: 40px;
   border-radius: 50%;
+  background-color: blue;
 }
 
-.userinfo-nickname {
-  color: #aaa;
+.cid_box .btn .name {
+  display: block;
+  height: 28px;
+  text-align: center;
+  font-size: 14px;
+  color: #3f4c71;
 }
 
-.usermotto {
-  margin-top: 200px;
+.cid_box .btn icon {
+  font-size: 20px;
+}
+
+.cid_box .all icon {
+  font-size: 18px;
+}
+
+.cid_box .dress icon {
+}
+
+.cid_box .man icon {
+  line-height: 43px;
+}
+
+.cid_box .underwear icon {
+  font-size: 21px;
+}
+
+.cid_box .digital icon {
+  line-height: 42px;
+}
+
+.cid_box .food icon {
+  line-height: 43px;
+}
+
+.cid_box .beauty icon {
+  font-size: 21px;
+  line-height: 45px;
+}
+
+.cid_box .infant icon {
+  font-size: 22px;
+}
+
+.cid_box .shoes icon {
+}
+
+.cid_box .household icon {
+  font-size: 21px;
+  line-height: 45px;
+}
+
+.cid_box .sport icon {
+  font-size: 22px;
+}
+
+.cid_box .else icon {
+  font-size: 22px;
 }
