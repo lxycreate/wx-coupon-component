@@ -6,7 +6,9 @@
       <button class="btn {{item.is_select?'btn_selected':''}}" wx:for="{{filter_btns}}" wx:key="index">
         {{item.name}}
         <view wx:if="{{index==2}}" class="icon_box">
-          <image src="../images/up_tri.png"></image>
+          <!-- <image src="../images/up_tri.png"></image> -->
+          <icon class="iconfont icon-xiangshang1 asc"></icon>
+          <icon class="iconfont icon-xiangxia desc"></icon>
         </view>
         <!-- <text wx:if="{{index!=3}}" class="line"></text> -->
       </button>
@@ -15,7 +17,7 @@
   <!-- 头部   end -->
 
   <!-- 商品区域   start -->
-  <scroll-view class='scroll_box'>
+  <scroll-view scroll-y="{{true}}" class="scroll_box js_scroll_box" enable-back-to-top="{{true}}" lower-threshold="30px"  bindscroll="scrollGoodsList" scroll-top="{{scroll_goods_list.top}}" scroll-with-animation="{{true}}">
 
     <!-- 商品区域   start -->
     <view class="goods_list">
@@ -58,7 +60,15 @@
         </view>
       </view>
     </view>
-    <!-- 商品区域  end -->
+
+    <!-- 加载动画 -->
+    <view class="loading_box" hidden="{{is_hidden_loading}}">
+      <image class="loading" src="../images/loading.gif"></image>
+    </view>
   </scroll-view>
   <!-- 商品区域   end -->
+  <!-- 返回顶部按钮 -->
+  <button class="to_top" hover="true" hover-class="to_top_hover" hidden="{{is_hidden_top}}" bindtap='scrollToTop'>
+    <icon class="iconfont icon-xiangshang"></icon>
+  </button>
 </view>
