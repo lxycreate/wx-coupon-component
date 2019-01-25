@@ -109,6 +109,7 @@ Page({
   // 获取商品
   getGoods: function(callback) {
     if (this.data.can_ajax) {
+      this.data.can_ajax = false;
       wx.request({
         url: 'http://localhost:8088/getGoods',
         data: goods_obj,
@@ -143,6 +144,7 @@ Page({
         is_hidden_loading: true
       })
     }
+   this.data.can_ajax = true;
   },
   // 关闭动画
   closeLoading: function() {
@@ -153,14 +155,16 @@ Page({
   // 底部上滑加载更多
   scrollLowerEvent: function() {
     // console.log('到底了');
-    this.setData({
-      is_hidden_loading: false
-    });
-    var num = goods_obj['page_num'];
-    goods_obj['page_num'] = num + 1;
-    setTimeout(function() {
-      current_page.getGoods(current_page.parseGoodsList);
-    }, 600)
+    if (this.data.can_ajax) {
+      this.setData({
+        is_hidden_loading: false
+      });
+      var num = goods_obj['page_num'];
+      goods_obj['page_num'] = num + 1;
+      setTimeout(function() {
+        current_page.getGoods(current_page.parseGoodsList);
+      }, 600)
+    }
   },
   // 商品列表滚动事件
   scrollGoodsList: function(event) {

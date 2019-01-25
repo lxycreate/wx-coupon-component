@@ -162,7 +162,6 @@ function getGoods(callback) {
     },
     success: function(res) {
       current_page.data.error_count = 0;
-      console.log(res.data);
       if (res != null && res.data != null) {
         callback(res.data);
       }
