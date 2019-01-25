@@ -1,0 +1,14 @@
+<!--pages/catalog/catalog.wxml-->
+<view class="content">
+  <!-- 头部   start -->
+  <view class='header'>
+    <view class="btn_box">
+    
+    </view>
+  </view>
+  <!-- 头部   end -->
+
+  <!-- 商品区域   start -->
+  <scroll-view class='goods_list'></scroll-view>
+  <!-- 商品区域   end -->
+</view>

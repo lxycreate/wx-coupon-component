@@ -99,6 +99,7 @@ Page({
   // 初始化goods_obj
   initGoodsObj: function() {
     goods_obj['page_num'] = 1;
+    goods_obj['page_size'] = 20;
     goods_obj['sort'] = 'goods_sale desc';
   },
   // 获取商品

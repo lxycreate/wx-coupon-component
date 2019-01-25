@@ -1,12 +1,13 @@
 {
-  "pages":[
+  "pages": [
+    "pages/catalog/catalog",
     "pages/index/index",
     "pages/logs/logs"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "微淘券",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   }
 }
