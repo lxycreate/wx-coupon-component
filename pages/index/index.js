@@ -129,6 +129,7 @@ Page({
             this.data.can_ajax = false;
           }
           console.log('请求错误' + res);
+          this.closeLoading();
         }
       });
     }
@@ -142,6 +143,12 @@ Page({
         is_hidden_loading: true
       })
     }
+  },
+  // 关闭动画
+  closeLoading: function() {
+    this.setData({
+      is_hidden_loading: true
+    })
   },
   // 底部上滑加载更多
   scrollLowerEvent: function() {
