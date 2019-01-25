@@ -215,9 +215,10 @@ page {
 
 .goods_list .goods_item .goods_container .text_box .goods_title {
   display: block;
+  margin-top: 2px;
   font-size: 14px;
   text-align: left;
-  line-height: 1;
+  line-height: 15px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
