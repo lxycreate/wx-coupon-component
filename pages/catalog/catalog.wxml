@@ -3,12 +3,12 @@
   <!-- 头部   start -->
   <view class='header'>
     <view class="btn_box">
-      <button class="btn {{item.is_select?'btn_selected':''}}" wx:for="{{filter_btns}}" wx:key="index">
+      <button class="btn {{item.is_select?'btn_selected':''}}" wx:for="{{filter_btns}}" wx:key="index" bindtap="changeSortWay" data-index="{{index}}">
         {{item.name}}
         <view wx:if="{{index==2}}" class="icon_box">
           <!-- <image src="../images/up_tri.png"></image> -->
-          <icon class="iconfont icon-xiangshang1 asc"></icon>
-          <icon class="iconfont icon-xiangxia desc"></icon>
+          <icon wx:if="{{is_price_asc}}" class="iconfont icon-xiangshang1 asc"></icon>
+          <icon wx:if="{{is_price_desc}}" class="iconfont icon-xiangxia desc"></icon>
         </view>
         <!-- <text wx:if="{{index!=3}}" class="line"></text> -->
       </button>
@@ -17,8 +17,8 @@
   <!-- 头部   end -->
 
   <!-- 商品区域   start -->
-  <scroll-view scroll-y="{{true}}" class="scroll_box js_scroll_box" enable-back-to-top="{{true}}" lower-threshold="30px"  bindscroll="scrollGoodsList" scroll-top="{{scroll_goods_list.top}}" scroll-with-animation="{{true}}">
-
+  <scroll-view scroll-y="{{true}}" class="scroll_box js_scroll_box" enable-back-to-top="{{true}}" lower-threshold="30px" bindscroll="scrollGoodsList" scroll-top="{{scroll_goods_list.top}}" scroll-with-animation="{{true}}">
+    <view hidden="{{is_hidden_top_loading}}" class="top_loading">加载中...</view>
     <!-- 商品区域   start -->
     <view class="goods_list">
       <view class="goods" wx:for="{{goods_list}}" wx:key="">

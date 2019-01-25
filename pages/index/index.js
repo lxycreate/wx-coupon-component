@@ -117,19 +117,19 @@ Page({
           'content-type': 'application/json'
         },
         success: function(res) {
-          this.data.error_count = 0;
+          current_page.data.error_count = 0;
           if (res != null && res.data != null) {
             callback(res.data);
           }
         },
         fail: function(res) {
-          this.data.error_count++;
+          current_page.data.error_count++;
           // 错误三次就无法请求
-          if (this.data.error_count >= 3) {
-            this.data.can_ajax = false;
+          if (current_page.data.error_count >= 3) {
+            current_page.data.can_ajax = false;
           }
           console.log('请求错误' + res);
-          this.closeLoading();
+          current_page.closeLoading();
         }
       });
     }
