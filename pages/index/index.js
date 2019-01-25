@@ -79,7 +79,11 @@ Page({
     scroll_goods_list: {
       top: 0, // 用于设置滚动条位置
       height: 0 // 滚动区域可视高度
-    }
+    },
+    // 请求错误计数器
+    error_count: 0,
+    // 可以进行ajax请求标志
+    can_ajax: true
   },
   onLoad() {
     var pages = getCurrentPages() //获取加载的页面
@@ -104,19 +108,30 @@ Page({
   },
   // 获取商品
   getGoods: function(callback) {
-    wx.request({
-      url: 'http://localhost:8088/getGoods',
-      data: goods_obj,
-      method: 'get',
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function(res) {
-        if (res != null && res.data != null) {
-          callback(res.data);
+    if (this.data.can_ajax) {
+      wx.request({
+        url: 'http://localhost:8088/getGoods',
+        data: goods_obj,
+        method: 'get',
+        header: {
+          'content-type': 'application/json'
+        },
+        success: function(res) {
+          this.data.error_count = 0;
+          if (res != null && res.data != null) {
+            callback(res.data);
+          }
+        },
+        fail: function(res) {
+          this.data.error_count++;
+          // 错误三次就无法请求
+          if (this.data.error_count >= 3) {
+            this.data.can_ajax = false;
+          }
+          console.log('请求错误' + res);
         }
-      }
-    });
+      });
+    }
   },
   // 解析商品列表
   parseGoodsList: function(data) {

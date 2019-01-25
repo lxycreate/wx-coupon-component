@@ -30,7 +30,7 @@ Page({
     // 当前排序方式
     sort_way: 0,
     // 是否显示加载动画
-    is_hidden_loading: true,
+    is_hidden_loading: false,
     // 是否显示返回顶部
     is_hidden_top: true,
     scroll_goods_list: {
@@ -41,7 +41,9 @@ Page({
   onLoad: function(options) {
     this.init();
     initGoodsObj();
-    getGoods(parseGoodsList);
+    setTimeout(function(){
+      getGoods(parseGoodsList);
+    },400);
   },
   init: function() {
     var pages = getCurrentPages() //获取加载的页面
