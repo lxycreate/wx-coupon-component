@@ -3,6 +3,8 @@
 const app = getApp()
 // ajax参数
 var goods_obj = {};
+// 当前页面对象
+var current_page;
 // 页面
 Page({
   data: {
@@ -69,10 +71,25 @@ Page({
       icon_class_name: 'icon-qita'
     }],
     // 商品列表
-    goods_list: []
+    goods_list: [],
+    // 是否显示正在加载
+    is_hidden_loading: true,
+    // 是否显示回到顶部按钮
+    is_hidden_top: true,
+    scroll_goods_list: {
+      top: 0, // 用于设置滚动条位置
+      height: 0 // 滚动区域可视高度
+    }
   },
-  onLoad(data) {
- 
+  onLoad() {
+    var pages = getCurrentPages() //获取加载的页面
+    current_page = pages[pages.length - 1] //获取当前页面的对象
+    var query = wx.createSelectorQuery();
+    query.select('.js_scroll_box').boundingClientRect()
+    query.exec(function(res) {
+      current_page.data.scroll_goods_list.height = res[0].height;
+      console.log(current_page.data.scroll_goods_list.height);
+    })
   },
   // 页面渲染完成
   onReady() {
@@ -105,8 +122,40 @@ Page({
     if (data.goods != null && data.goods.length > 0) {
       // this.onLoad(data.goods);
       this.setData({
-        goods_list: this.data.goods_list.concat(data.goods)
+        goods_list: this.data.goods_list.concat(data.goods),
+        is_hidden_loading: true
       })
     }
+  },
+  // 底部上滑加载更多
+  scrollLowerEvent: function() {
+    // console.log('到底了');
+    this.setData({
+      is_hidden_loading: false
+    });
+    var num = goods_obj['page_num'];
+    goods_obj['page_num'] = num + 1;
+    setTimeout(function() {
+      current_page.getGoods(current_page.parseGoodsList);
+    }, 600)
+  },
+  // 商品列表滚动事件
+  scrollGoodsList: function(event) {
+    if (event.detail.scrollTop > this.data.scroll_goods_list.height) {
+      this.setData({
+        is_hidden_top: false
+      })
+    } else {
+      this.setData({
+        is_hidden_top: true
+      })
+    }
+  },
+  // 回到顶部
+  scrollToTop: function() {
+    this.setData({
+      "scroll_goods_list.top": 0
+    })
   }
+
 });

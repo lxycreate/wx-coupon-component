@@ -7,7 +7,7 @@
     </form>
   </view>
   <!-- 头部   end -->
-  <scroll-view scroll-y="{{true}}" class="scroll_box">
+  <scroll-view scroll-y="{{true}}" class="scroll_box js_scroll_box" enable-back-to-top="{{true}}" lower-threshold="40px" bindscrolltolower="scrollLowerEvent" bindscroll="scrollGoodsList"scroll-top="{{scroll_goods_list.top}}" scroll-with-animation="{{true}}">
     <!-- 分类盒子   start -->
     <view class="cid_box">
       <view class="cover" wx:for="{{cid_btns}}" wx:key="">
@@ -19,6 +19,7 @@
     </view>
     <!-- 分类盒子   end -->
     <text class="title">商品推荐</text>
+
     <!-- 商品区域   start -->
     <view class="goods_list">
       <view class="goods" wx:for="{{goods_list}}" wx:key="">
@@ -59,10 +60,13 @@
           <!--第二container  end-->
         </view>
       </view>
-
-
-
     </view>
     <!-- 商品区域  end -->
+    <view class="loading_box" hidden="{{is_hidden_loading}}">
+      <image class="loading" src="../images/loading.gif"></image>
+    </view>
   </scroll-view>
+  <button class="to_top" hover="true" hover-class="to_top_hover" hidden="{{is_hidden_top}}" bindtap='scrollToTop'>
+    <icon class="iconfont icon-xiangshang"></icon>
+  </button>
 </view>
