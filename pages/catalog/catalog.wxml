@@ -3,12 +3,62 @@
   <!-- 头部   start -->
   <view class='header'>
     <view class="btn_box">
-    
+      <button class="btn {{item.is_select?'btn_selected':''}}" wx:for="{{filter_btns}}" wx:key="index">
+        {{item.name}}
+        <view wx:if="{{index==2}}" class="icon_box">
+          <image src="../images/up_tri.png"></image>
+        </view>
+        <!-- <text wx:if="{{index!=3}}" class="line"></text> -->
+      </button>
     </view>
   </view>
   <!-- 头部   end -->
 
   <!-- 商品区域   start -->
-  <scroll-view class='goods_list'></scroll-view>
+  <scroll-view class='scroll_box'>
+
+    <!-- 商品区域   start -->
+    <view class="goods_list">
+      <view class="goods" wx:for="{{goods_list}}" wx:key="">
+        <view class="goods_item">
+          <!-- 图 -->
+          <view class="goods_container">
+            <view class="img_box">
+              <image src="{{item.goods_pic}}"></image>
+            </view>
+          </view>
+          <!-- 文 -->
+          <view class="goods_container">
+            <view class="text_box">
+              <text class="goods_title">{{item.goods_title}}</text>
+              <view class="price_sale">
+                <text class="price">原价￥{{item.goods_price}}</text>
+                <text class="sale">销量 {{item.goods_sale}}</text>
+              </view>
+              <!-- <text class="dsr">评分 4.8</text> -->
+              <!--  -->
+              <view class="price_coupon">
+                <view class="box left">
+                  <text>
+                     <text class="the_title">券后</text>
+                  <text class="the_value">￥{{item.after_coupon}}</text>
+                  </text>
+                </view>
+                <view class="box right">
+                  <text>
+                    <text class="the_title">领券</text>
+                  <text class="the_value">￥{{item.coupon_price}}</text>
+                  </text>
+                </view>
+              </view>
+            </view>
+            <!-- text_box  end -->
+          </view>
+          <!--第二container  end-->
+        </view>
+      </view>
+    </view>
+    <!-- 商品区域  end -->
+  </scroll-view>
   <!-- 商品区域   end -->
 </view>
