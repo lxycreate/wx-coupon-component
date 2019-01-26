@@ -12,7 +12,7 @@
     <!-- 分类盒子   start -->
     <view class="cid_box">
       <view class="cover" wx:for="{{cid_btns}}" wx:key="item">
-        <button class="btn {{item.class_name}}">
+        <button class="btn {{item.class_name}}" data-value="{{item.value}}" bindtap="jumpToCatalog">
           <icon class="iconfont {{item.icon_class_name}}"></icon>
           <text class="name">{{item.name}}</text>
         </button>

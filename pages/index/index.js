@@ -110,6 +110,14 @@ Page({
     goods_obj['page_size'] = 10;
     goods_obj['sort'] = 'goods_sale desc';
   },
+  // 页面跳转
+  jumpToCatalog: function(event) {
+    var value = event.currentTarget.dataset.value;
+    var url = '../../pages/catalog/catalog?cid=' + value;
+    wx.navigateTo({
+      url: url
+    })
+  },
   // 获取商品
   getGoods: function(callback) {
     wx.request({

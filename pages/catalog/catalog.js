@@ -3,6 +3,8 @@
 var goods_obj = {};
 // 页面对象
 var current_page;
+// 当前分类
+var cid = '';
 // 页面
 Page({
   data: {
@@ -96,6 +98,7 @@ Page({
     high_price: ''
   },
   onLoad: function(options) {
+    cid = options.cid;
     this.init();
     initGoodsObj();
   },
@@ -331,6 +334,7 @@ Page({
 // 初始化goods_obj
 function initGoodsObj() {
   goods_obj = {};
+  goods_obj['goods_cid'] = cid;
   goods_obj['page_num'] = 1;
   goods_obj['page_size'] = 10;
   // goods_obj['is_ju'] = 1;
