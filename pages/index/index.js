@@ -144,7 +144,7 @@ Page({
         is_hidden_loading: true
       })
     }
-   this.data.can_ajax = true;
+   this.data.can_ajax = true; // 可以进行下一次ajax请求
   },
   // 关闭动画
   closeLoading: function() {

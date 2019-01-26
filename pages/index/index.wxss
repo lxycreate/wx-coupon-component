@@ -30,7 +30,7 @@ page {
 }
 
 .header .search_box .search_input {
-  width: 86%;
+  width: 90%;
   margin: 0 auto auto auto;
   height: 30px;
   min-height: 0;
@@ -325,7 +325,7 @@ page {
   left: 100%;
   width: 40px;
   height: 40px;
-  margin: -90px 0 0 -45px;
+  margin: -45px 0 0 -45px;
   border-radius: 50%;
   background-color: rgba(63, 73, 100, 0.8);
 }
