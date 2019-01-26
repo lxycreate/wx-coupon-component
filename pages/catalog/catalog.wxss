@@ -128,8 +128,10 @@ page {
 .screen_box .sale input {
   width: 80px;
   height: 30px;
+  min-height: 30px;
   margin: 15px 0 0 15px;
   text-align: center;
+  line-height: 30px;
   border-radius: 5px;
   background-color: #eee;
 }
@@ -143,10 +145,12 @@ page {
   display: inline-block;
   width: 80px;
   height: 30px;
+  min-height: 30px;
   margin: 15px 0 0 15px;
   text-align: center;
   border-radius: 5px;
   font-size: 14px;
+  line-height: 30px;
   background-color: #eee;
 }
 

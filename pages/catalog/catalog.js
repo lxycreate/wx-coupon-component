@@ -325,7 +325,6 @@ Page({
         high_price: high
       })
     }
-    console.log(flag);
     if (flag) {
       var e = goods_obj['page_num'];
       addProperty('page_num', e);
