@@ -99,6 +99,9 @@ Page({
   },
   onLoad: function(options) {
     cid = options.cid;
+    wx.setNavigationBarTitle({
+      title: options.title
+    });
     this.init();
     initGoodsObj();
   },
