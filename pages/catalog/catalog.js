@@ -110,20 +110,20 @@ Page({
     var temp = this.data.sort_way;
     var index = event.currentTarget.dataset.index;
     // 变颜色
-    if (index < 3) {
-      if (index != temp) {
-        var s = '';
-        for (var i = 0; i < this.data.filter_btns.length; ++i) {
-          s = 'filter_btns[' + i + '].is_select';
-          this.setData({
-            [s]: false
-          })
-        }
-        s = 'filter_btns[' + index + '].is_select';
+    if (index != temp) {
+      var s = '';
+      for (var i = 0; i < this.data.filter_btns.length; ++i) {
+        s = 'filter_btns[' + i + '].is_select';
         this.setData({
-          [s]: true
+          [s]: false
         })
       }
+      s = 'filter_btns[' + index + '].is_select';
+      this.setData({
+        [s]: true
+      })
+    }
+    if (index < 3) {
       this.data.sort_way = index;
     }
     // 事件
@@ -162,6 +162,33 @@ Page({
       addProperty('sort', 'goods_price asc');
     }
   },
+  // 筛选事件
+  changeScreen: function(event) {
+    var index = event.currentTarget.dataset.index;
+    var temp = index - 1;
+    var s = 'screen_btns[' + temp + '].is_select';
+    if (this.data.screen_btns[index - 1].is_select) {
+      this.setData({
+        [s]: false
+      })
+    } else {
+      this.setData({
+        [s]: true
+      })
+    }
+    if (index == 1 && this.data.screen_btns[1].is_select) {
+      s = 'screen_btns[1].is_select';
+      this.setData({
+        [s]: false
+      })
+    }
+    if (index == 2 && this.data.screen_btns[0].is_select) {
+      s = 'screen_btns[0].is_select';
+      this.setData({
+        [s]: false
+      })
+    }
+  },
   // 滚动事件
   scrollGoodsList: function(event) {
     // console.log(event.detail);
@@ -177,9 +204,7 @@ Page({
   },
   // 滑动到底部加载更多
   scrollLowerEvent: function() {
-    if (this.data.is_more_goods && this.data.can_ajax) {
-      loadNextPage();
-    }
+    loadNextPage();
   },
   // 回到顶部
   scrollToTop: function() {
@@ -275,36 +300,41 @@ function deleteProperty(name) {
 
 // 加载下一页
 function loadNextPage() {
-  current_page.data.can_ajax = false;
-  // 不清空
-  current_page.data.is_clear_list = false;
-  // 显示加载动画
-  current_page.setData({
-    is_hidden_loading: false
-  })
-  var num = goods_obj['page_num'];
-  goods_obj['page_num'] = num + 1;
-  setTimeout(function() {
-    getGoods(parseGoodsList);
-  }, 600)
+  if (current_page.data.is_more_goods && current_page.data.can_ajax) {
+    current_page.data.can_ajax = false;
+    // 不清空
+    current_page.data.is_clear_list = false;
+    // 显示加载动画
+    current_page.setData({
+      is_hidden_loading: false
+    })
+    var num = goods_obj['page_num'];
+    goods_obj['page_num'] = num + 1;
+    setTimeout(function() {
+      getGoods(parseGoodsList);
+    }, 600)
+  }
 }
 
 // 准备请求排序商品数据
 function prepareSortGoods() {
-  // 关闭"没有更多了..."提示
-  current_page.setData({
-    is_more_goods: true
-  })
-  // 清空数组标志
-  current_page.data.is_clear_list = true;
-  // 返回顶部并开启加载动画
-  current_page.setData({
-    'scroll_goods_list.top': 0,
-    is_hidden_top_loading: false
-  })
-  setTimeout(function() {
-    getGoods(parseGoodsList);
-  }, 400)
+  if (current_page.data.can_ajax) {
+    current_page.data.can_ajax = false;
+    // 关闭"没有更多了..."提示
+    current_page.setData({
+      is_more_goods: true
+    })
+    // 清空数组标志
+    current_page.data.is_clear_list = true;
+    // 返回顶部并开启加载动画
+    current_page.setData({
+      'scroll_goods_list.top': 0,
+      is_hidden_top_loading: false
+    })
+    setTimeout(function() {
+      getGoods(parseGoodsList);
+    }, 400)
+  }
 }
 
 // 关闭动画

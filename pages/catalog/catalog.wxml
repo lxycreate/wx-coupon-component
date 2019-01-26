@@ -16,7 +16,7 @@
       <text class="title">筛选</text>
       <view class="screen_btns">
         <view class="cover" wx:for="{{screen_btns}}" wx:key="index">
-          <button class="btn {{item.is_select?'screen_selected':''}}">{{item.name}}</button>
+          <button class="btn {{item.is_select?'screen_selected':''}}" data-index="{{item.index}}" bindtap="changeScreen">{{item.name}}</button>
         </view>
       </view>
     </view>
