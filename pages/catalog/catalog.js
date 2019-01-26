@@ -25,6 +25,41 @@ Page({
         is_select: false
       }
     ],
+    // 筛选弹窗里的按钮
+    screen_btns: [{
+        name: '淘抢购', //名称   
+        index: 1, //必须使用自定义的index，否则监听filter_value的函数中出现异常出现-0
+        an_name: 'is_qiang', //搜索时的对应的参数名
+        is_select: false // 是否被选中
+      }, {
+        name: '聚划算',
+        index: 2,
+        an_name: 'is_ju',
+        is_select: false
+      },
+      {
+        name: '天猫',
+        index: 3,
+        an_name: 'is_tmall',
+        is_select: false
+      }, {
+        name: '金牌卖家',
+        index: 4,
+        an_name: 'is_gold',
+        is_select: false
+      }, {
+        name: '海淘',
+        index: 5,
+        an_name: 'is_hai',
+        is_select: false
+      },
+      {
+        name: '运费险',
+        index: 6,
+        an_name: 'is_yun',
+        is_select: false
+      }
+    ],
     // 商品列表
     goods_list: [],
     // 当前排序方式
@@ -68,7 +103,6 @@ Page({
     query.select('.js_scroll_box').boundingClientRect()
     query.exec(function(res) {
       current_page.data.scroll_goods_list.height = res[0].height;
-      console.log(res[0].height);
     })
   },
   // 改变排序方式
@@ -140,11 +174,6 @@ Page({
         is_hidden_top: true
       })
     }
-    // var temp = event.detail.scrollTop + 10 + this.data.scroll_goods_list.height;
-    // if (temp > event.detail.scrollHeight && this.data.can_ajax && this.data.is_more_goods) {
-    //   console.log(this.data.goods_list.length);
-    //   loadNextPage();
-    // }
   },
   // 滑动到底部加载更多
   scrollLowerEvent: function() {
@@ -166,6 +195,8 @@ function initGoodsObj() {
   goods_obj = {};
   goods_obj['page_num'] = 1;
   goods_obj['page_size'] = 10;
+  // goods_obj['is_ju'] = 1;
+  // goods_obj['is_qiang'] = 1;
 }
 
 // 获取商品
