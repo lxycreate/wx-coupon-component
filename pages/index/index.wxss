@@ -356,3 +356,7 @@ page {
   color: #3f4964;
   text-align: center;
 }
+
+.filter_box{
+  height: 20px;
+}

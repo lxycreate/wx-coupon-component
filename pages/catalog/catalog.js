@@ -55,6 +55,8 @@ Page({
   onLoad: function(options) {
     this.init();
     initGoodsObj();
+  },
+  onReady: function() {
     setTimeout(function() {
       getGoods(parseGoodsList);
     }, 400);

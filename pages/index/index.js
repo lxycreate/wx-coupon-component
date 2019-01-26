@@ -73,7 +73,7 @@ Page({
     // 商品列表
     goods_list: [],
     // 是否显示正在加载
-    is_hidden_loading: true,
+    is_hidden_loading: false,
     // 是否显示回到顶部按钮
     is_hidden_top: true,
     scroll_goods_list: {
@@ -100,12 +100,14 @@ Page({
   // 页面渲染完成
   onReady() {
     this.initGoodsObj();
-    this.getGoods(this.parseGoodsList);
+    setTimeout(function() {
+     current_page.getGoods(current_page.parseGoodsList);
+    }, 400)
   },
   // 初始化goods_obj
   initGoodsObj: function() {
     goods_obj['page_num'] = 1;
-    goods_obj['page_size'] = 20;
+    goods_obj['page_size'] = 10;
     goods_obj['sort'] = 'goods_sale desc';
   },
   // 获取商品
@@ -162,8 +164,8 @@ Page({
   },
   // 底部上滑加载更多
   scrollLowerEvent: function() {
-    // console.log('到底了');
-    if (this.data.can_ajax && this.is_more_goods) {
+    console.log('到底了');
+    if (this.data.can_ajax && this.data.is_more_goods) {
       this.setData({
         is_hidden_loading: false
       });
