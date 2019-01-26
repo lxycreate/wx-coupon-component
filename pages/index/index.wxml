@@ -11,7 +11,7 @@
     <!-- <view class="the_filter"></view> -->
     <!-- 分类盒子   start -->
     <view class="cid_box">
-      <view class="cover" wx:for="{{cid_btns}}" wx:key="">
+      <view class="cover" wx:for="{{cid_btns}}" wx:key="item">
         <button class="btn {{item.class_name}}">
           <icon class="iconfont {{item.icon_class_name}}"></icon>
           <text class="name">{{item.name}}</text>
@@ -28,7 +28,7 @@
           <!-- 图 -->
           <view class="goods_container">
             <view class="img_box">
-              <image src="{{item.goods_pic}}"></image>
+              <image src="{{item.goods_pic}}" lazy-load="{{true}}"></image>
             </view>
           </view>
           <!-- 文 -->
@@ -64,7 +64,7 @@
     </view>
     <!-- 商品区域  end -->
     <view class="loading_box" hidden="{{is_hidden_loading}}">
-      <image class="loading" src="../images/loading.gif"></image>
+      <image class="loading" lazy-load="{{true}}" src="../images/loading.gif"></image>
     </view>
     <!-- 没有更多了提示 -->
     <view class="no_more" hidden="{{is_more_goods}}">没有更多了...</view>

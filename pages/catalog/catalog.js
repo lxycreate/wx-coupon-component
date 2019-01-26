@@ -149,9 +149,7 @@ Page({
   // 滑动到底部加载更多
   scrollLowerEvent: function() {
     if (this.data.is_more_goods && this.data.can_ajax) {
-      console.log(this.data.goods_list.length);
       loadNextPage();
-      console.log('到底了');
     }
   },
   // 回到顶部
@@ -159,9 +157,6 @@ Page({
     this.setData({
       "scroll_goods_list.top": 0
     })
-  },
-  onPageScroll: function(e) {
-    console.log(e);
   }
   // 
 })

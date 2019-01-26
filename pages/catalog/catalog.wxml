@@ -19,12 +19,12 @@
     <view hidden="{{is_hidden_top_loading}}" class="top_loading">加载中...</view>
     <!-- 商品区域   start -->
     <view class="goods_list">
-      <view class="goods" wx:for="{{goods_list}}" wx:key="index">
+      <view class="goods" wx:for="{{goods_list}}" wx:key="item">
         <view class="goods_item">
           <!-- 图 -->
           <view class="goods_container">
             <view class="img_box">
-              <image src="{{item.goods_pic}}"></image>
+              <image src="{{item.goods_pic}}" lazy-load="{{true}}"></image>
             </view>
           </view>
           <!-- 文 -->
@@ -61,7 +61,7 @@
 
     <!-- 加载动画 -->
     <view class="loading_box" hidden="{{is_hidden_loading}}">
-      <image class="loading" src="../images/loading.gif"></image>
+      <image class="loading" lazy-load="{{true}}" src="../images/loading.gif"></image>
     </view>
     <!-- 没有更多了提示 -->
     <view class="no_more" hidden="{{is_more_goods}}">没有更多了...</view>
