@@ -85,7 +85,13 @@ Page({
     // 是否隐藏顶部加载提示
     is_hidden_top_loading: true,
     // 还有更多商品
-    is_more_goods: true
+    is_more_goods: true,
+    // 销量
+    goods_sale: '',
+    // 最低价
+    low_price: '',
+    // 最高价
+    high_price: ''
   },
   onLoad: function(options) {
     this.init();
@@ -110,7 +116,7 @@ Page({
     var temp = this.data.sort_way;
     var index = event.currentTarget.dataset.index;
     // 变颜色
-    if (index != temp) {
+    if (index < 3 && index != temp) {
       var s = '';
       for (var i = 0; i < this.data.filter_btns.length; ++i) {
         s = 'filter_btns[' + i + '].is_select';
@@ -122,8 +128,7 @@ Page({
       this.setData({
         [s]: true
       })
-    }
-    if (index < 3) {
+
       this.data.sort_way = index;
     }
     // 事件
@@ -170,24 +175,33 @@ Page({
     if (this.data.screen_btns[index - 1].is_select) {
       this.setData({
         [s]: false
-      })
+      });
+      deleteProperty(this.data.screen_btns[index - 1].an_name);
     } else {
       this.setData({
         [s]: true
-      })
+      });
+      if (index == 1 && this.data.screen_btns[1].is_select) {
+        s = 'screen_btns[1].is_select';
+        this.setData({
+          [s]: false
+        });
+        if (goods_obj.hasOwnProperty('is_ju')) {
+          delete goods_obj['is_ju'];
+        }
+      }
+      if (index == 2 && this.data.screen_btns[0].is_select) {
+        s = 'screen_btns[0].is_select';
+        this.setData({
+          [s]: false
+        });
+        if (goods_obj.hasOwnProperty('is_qiang')) {
+          delete goods_obj['is_qiang'];
+        }
+      }
+      addProperty(this.data.screen_btns[index - 1].an_name, '1');
     }
-    if (index == 1 && this.data.screen_btns[1].is_select) {
-      s = 'screen_btns[1].is_select';
-      this.setData({
-        [s]: false
-      })
-    }
-    if (index == 2 && this.data.screen_btns[0].is_select) {
-      s = 'screen_btns[0].is_select';
-      this.setData({
-        [s]: false
-      })
-    }
+
   },
   // 滚动事件
   scrollGoodsList: function(event) {
@@ -211,6 +225,88 @@ Page({
     this.setData({
       "scroll_goods_list.top": 0
     })
+  },
+  // 获取输入的销量值
+  getInputSale: function(e) {
+    if (e.detail.value != '') {
+      this.data.goods_sale = e.detail.value;
+    }
+  },
+  // 获取最低价
+  getLowPrice: function(e) {
+    if (e.detail.value != '') {
+      this.data.low_price = e.detail.value;
+    }
+  },
+  // 获取最高价
+  getHighPrice: function(e) {
+    if (e.detail.value != '') {
+      this.data.high_price = e.detail.value;
+    }
+  },
+  // 重置
+  clear: function() {
+    this.resetScreenBtns();
+    this.resetInput();
+    this.clearGoodsObj();
+  },
+  // 清理goods_obj
+  clearGoodsObj: function() {
+    var e = '';
+    if (goods_obj['sort'] != undefined && goods_obj['sort'] != '') {
+      e = goods_obj['sort'];
+    }
+    initGoodsObj();
+    addProperty('sort', e);
+  },
+  // 重置筛选按钮
+  resetScreenBtns: function() {
+    var s = '';
+    for (var i = 0; i < 3; ++i) {
+      s = 'screen_btns[' + i + '].is_select';
+      this.setData({
+        [s]: false
+      })
+    }
+  },
+  // 重置input
+  resetInput: function() {
+    this.setData({
+      goods_sale: '',
+      low_price: '',
+      high_price: ''
+    })
+  },
+  // 确认
+  confirm: function() {
+    var flag = false;
+    if (this.data.goods_sale != '') {
+      goods_obj['sale_num'] = this.data.goods_sale;
+      flag = true;
+    }
+    if (this.data.low_price != '') {
+      goods_obj['start_price'] = this.data.low_price;
+      flag = true;
+    }
+    if (this.data.high_price != '') {
+      goods_obj['end_price'] = this.data.high_price;
+      flag = true;
+    }
+    if (this.data.low_price != '' && this.data.high_price != '' && this.data.high_price < this.data.low_price) {
+      var low = this.data.high_price;
+      var high = this.data.low_price;
+      goods_obj['start_price'] = low;
+      goods_obj['end_price'] = high;
+      this.setData({
+        low_price: low,
+        high_price: high
+      })
+    }
+    console.log(flag);
+    if (flag) {
+      var e = goods_obj['page_num'];
+      addProperty('page_num', e);
+    }
   }
   // 
 })
@@ -254,7 +350,8 @@ function getGoods(callback) {
 
 // 解析商品列表
 function parseGoodsList(data) {
-  if (data.goods != null && data.goods.length > 0) {
+  // console.log(data.goods);
+  if (data.goods != null) {
     if (current_page.data.is_clear_list) {
       current_page.setData({
         goods_list: data.goods
@@ -285,7 +382,8 @@ function parseGoodsList(data) {
 function addProperty(name, value) {
   goods_obj['page_num'] = 1;
   goods_obj[name] = value;
-  prepareSortGoods();
+  prepareGetGoods();
+  console.log(goods_obj);
 }
 
 // 从goods_obj中删除属性
@@ -293,7 +391,7 @@ function deleteProperty(name) {
   if (goods_obj.hasOwnProperty(name)) {
     goods_obj['page_num'] = 1;
     delete goods_obj[name];
-    prepareSortGoods();
+    prepareGetGoods();
   }
   console.log(goods_obj);
 }
@@ -317,7 +415,7 @@ function loadNextPage() {
 }
 
 // 准备请求排序商品数据
-function prepareSortGoods() {
+function prepareGetGoods() {
   if (current_page.data.can_ajax) {
     current_page.data.can_ajax = false;
     // 关闭"没有更多了..."提示
