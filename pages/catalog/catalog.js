@@ -82,6 +82,8 @@ Page({
     is_price_desc: false,
     // 清空数组标志
     is_clear_list: false,
+    // 是否隐藏筛选层
+    is_hidden_screen_box: true,
     // 是否隐藏顶部加载提示
     is_hidden_top_loading: true,
     // 还有更多商品
@@ -116,20 +118,29 @@ Page({
     var temp = this.data.sort_way;
     var index = event.currentTarget.dataset.index;
     // 变颜色
-    if (index < 3 && index != temp) {
-      var s = '';
-      for (var i = 0; i < this.data.filter_btns.length; ++i) {
-        s = 'filter_btns[' + i + '].is_select';
+    if (index < 3) {
+      if (index != temp) {
+        var s = '';
+        for (var i = 0; i < this.data.filter_btns.length; ++i) {
+          s = 'filter_btns[' + i + '].is_select';
+          this.setData({
+            [s]: false
+          })
+        }
+        s = 'filter_btns[' + index + '].is_select';
         this.setData({
-          [s]: false
+          [s]: true
         })
       }
-      s = 'filter_btns[' + index + '].is_select';
-      this.setData({
-        [s]: true
-      })
-
+      // 隐藏筛选
+      this.hideScreenBox();
       this.data.sort_way = index;
+    }
+    // 显示筛选侧栏
+    if (index == 3) {
+      this.setData({
+        is_hidden_screen_box: false
+      })
     }
     // 事件
     if (index < 2) {
@@ -166,6 +177,12 @@ Page({
       })
       addProperty('sort', 'goods_price asc');
     }
+  },
+  // 隐藏筛选侧栏
+  hideScreenBox: function() {
+    this.setData({
+      is_hidden_screen_box: true
+    })
   },
   // 筛选事件
   changeScreen: function(event) {
