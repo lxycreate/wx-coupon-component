@@ -107,7 +107,7 @@ Page({
   // 初始化goods_obj
   initGoodsObj: function() {
     goods_obj['page_num'] = 1;
-    goods_obj['page_size'] = 20;
+    goods_obj['page_size'] = 10;
     goods_obj['sort'] = 'goods_sale desc';
   },
   // 获取商品
@@ -142,7 +142,6 @@ Page({
   // 解析商品列表
   parseGoodsList: function(data) {
     if (data.goods != null && data.goods.length > 0) {
-      // this.onLoad(data.goods);
       this.setData({
         goods_list: this.data.goods_list.concat(data.goods),
         is_hidden_loading: true
@@ -177,11 +176,11 @@ Page({
   },
   // 商品列表滚动事件
   scrollGoodsList: function(event) {
-    if (event.detail.scrollTop > this.data.scroll_goods_list.height) {
+    if (event.detail.scrollTop > this.data.scroll_goods_list.height && this.data.is_hidden_top) {
       this.setData({
         is_hidden_top: false
       })
-    } else {
+    } else if (event.detail.scrollTop < this.data.scroll_goods_list.height && !this.data.is_hidden_top) {
       this.setData({
         is_hidden_top: true
       })

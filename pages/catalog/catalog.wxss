@@ -227,7 +227,7 @@ page {
 
 .loading_box {
   height: 30px;
-  padding: 3px 0;
+  padding: 3px 0 5px 0 ;
   background-color: #fff;
 }
 

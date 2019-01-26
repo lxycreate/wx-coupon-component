@@ -131,11 +131,11 @@ Page({
   // 滚动事件
   scrollGoodsList: function(event) {
     // console.log(event.detail);
-    if (event.detail.scrollTop > this.data.scroll_goods_list.height) {
+    if (event.detail.scrollTop > this.data.scroll_goods_list.height && this.data.is_hidden_top) {
       this.setData({
         is_hidden_top: false
       })
-    } else {
+    } else if (event.detail.scrollTop < this.data.scroll_goods_list.height && !this.data.is_hidden_top) {
       this.setData({
         is_hidden_top: true
       })
@@ -260,7 +260,7 @@ function loadNextPage() {
   goods_obj['page_num'] = num + 1;
   setTimeout(function() {
     getGoods(parseGoodsList);
-  }, 400)
+  }, 600)
 }
 
 // 准备请求排序商品数据
