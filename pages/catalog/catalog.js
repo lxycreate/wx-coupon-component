@@ -140,11 +140,18 @@ Page({
         is_hidden_top: true
       })
     }
+    // var temp = event.detail.scrollTop + 10 + this.data.scroll_goods_list.height;
+    // if (temp > event.detail.scrollHeight && this.data.can_ajax && this.data.is_more_goods) {
+    //   console.log(this.data.goods_list.length);
+    //   loadNextPage();
+    // }
   },
   // 滑动到底部加载更多
   scrollLowerEvent: function() {
-    if (this.data.is_more_goods) {
+    if (this.data.is_more_goods && this.data.can_ajax) {
+      console.log(this.data.goods_list.length);
       loadNextPage();
+      console.log('到底了');
     }
   },
   // 回到顶部
@@ -152,6 +159,9 @@ Page({
     this.setData({
       "scroll_goods_list.top": 0
     })
+  },
+  onPageScroll: function(e) {
+    console.log(e);
   }
   // 
 })
@@ -160,7 +170,7 @@ Page({
 function initGoodsObj() {
   goods_obj = {};
   goods_obj['page_num'] = 1;
-  goods_obj['page_size'] = 20;
+  goods_obj['page_size'] = 10;
 }
 
 // 获取商品
@@ -196,14 +206,15 @@ function parseGoodsList(data) {
   if (data.goods != null && data.goods.length > 0) {
     if (current_page.data.is_clear_list) {
       current_page.setData({
-        goods_list: []
+        goods_list: data.goods
+      })
+    } else {
+      current_page.setData({
+        goods_list: current_page.data.goods_list.concat(data.goods)
       })
     }
-    current_page.setData({
-      goods_list: current_page.data.goods_list.concat(data.goods)
-    })
   }
-  current_page.data.can_ajax = true; // 可以进行下一次ajax请求
+  // 关闭动画
   closeLoading();
   // 显示没有更多了提示
   if (data.goods == null || data.goods.length < goods_obj['page_size']) {
@@ -211,6 +222,12 @@ function parseGoodsList(data) {
       is_more_goods: false
     })
   }
+  // 可以进行下一次ajax请求
+  setTimeout(function() {
+    current_page.data.can_ajax = true;
+  }, 400)
+
+  // 
 }
 
 // 从goods_obj中添加属性
@@ -232,6 +249,7 @@ function deleteProperty(name) {
 
 // 加载下一页
 function loadNextPage() {
+  current_page.data.can_ajax = false;
   // 不清空
   current_page.data.is_clear_list = false;
   // 显示加载动画
@@ -242,7 +260,7 @@ function loadNextPage() {
   goods_obj['page_num'] = num + 1;
   setTimeout(function() {
     getGoods(parseGoodsList);
-  }, 600)
+  }, 400)
 }
 
 // 准备请求排序商品数据
