@@ -180,7 +180,7 @@ page {
 /* 商品   start */
 
 .goods_list .goods {
-  margin-top: 1px;
+  border-bottom: 1px solid #f6f6f6;
 }
 
 .goods_list .goods_item {

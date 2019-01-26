@@ -7,7 +7,7 @@
     </form>
   </view>
   <!-- 头部   end -->
-  <scroll-view scroll-y="{{true}}" class="scroll_box js_scroll_box" enable-back-to-top="{{true}}" lower-threshold="40px" bindscrolltolower="scrollLowerEvent" bindscroll="scrollGoodsList" scroll-top="{{scroll_goods_list.top}}" scroll-with-animation="{{true}}">
+  <scroll-view scroll-y="{{true}}" class="scroll_box js_scroll_box" enable-back-to-top="{{true}}" lower-threshold="1px" bindscrolltolower="scrollLowerEvent" bindscroll="scrollGoodsList" scroll-top="{{scroll_goods_list.top}}" scroll-with-animation="{{true}}">
     <!-- <view class="the_filter"></view> -->
     <!-- 分类盒子   start -->
     <view class="cid_box">

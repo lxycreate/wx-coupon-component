@@ -48,7 +48,9 @@ Page({
     // 清空数组标志
     is_clear_list: false,
     // 是否隐藏顶部加载提示
-    is_hidden_top_loading: true
+    is_hidden_top_loading: true,
+    // 还有更多商品
+    is_more_goods: true
   },
   onLoad: function(options) {
     this.init();
@@ -126,6 +128,7 @@ Page({
   },
   // 滚动事件
   scrollGoodsList: function(event) {
+    // console.log(event.detail);
     if (event.detail.scrollTop > this.data.scroll_goods_list.height) {
       this.setData({
         is_hidden_top: false
@@ -135,7 +138,14 @@ Page({
         is_hidden_top: true
       })
     }
-  }, // 回到顶部
+  },
+  // 滑动到底部加载更多
+  scrollLowerEvent: function() {
+    if (this.data.is_more_goods) {
+      loadNextPage();
+    }
+  },
+  // 回到顶部
   scrollToTop: function() {
     this.setData({
       "scroll_goods_list.top": 0
@@ -161,6 +171,7 @@ function getGoods(callback) {
       'content-type': 'application/json'
     },
     success: function(res) {
+      // 错误次数清零
       current_page.data.error_count = 0;
       if (res != null && res.data != null) {
         callback(res.data);
@@ -187,9 +198,15 @@ function parseGoodsList(data) {
       })
     }
     current_page.setData({
-      goods_list: current_page.data.goods_list.concat(data.goods),
-      is_hidden_loading: true,
-      is_hidden_top_loading: true
+      goods_list: current_page.data.goods_list.concat(data.goods)
+    })
+  }
+  current_page.data.can_ajax = true; // 可以进行下一次ajax请求
+  closeLoading();
+  // 显示没有更多了提示
+  if (data.goods == null || data.goods.length < goods_obj['page_size']) {
+    current_page.setData({
+      is_more_goods: false
     })
   }
 }
@@ -211,9 +228,30 @@ function deleteProperty(name) {
   console.log(goods_obj);
 }
 
+// 加载下一页
+function loadNextPage() {
+  // 不清空
+  current_page.data.is_clear_list = false;
+  // 显示加载动画
+  current_page.setData({
+    is_hidden_loading: false
+  })
+  var num = goods_obj['page_num'];
+  goods_obj['page_num'] = num + 1;
+  setTimeout(function() {
+    getGoods(parseGoodsList);
+  }, 600)
+}
+
 // 准备请求排序商品数据
 function prepareSortGoods() {
+  // 关闭"没有更多了..."提示
+  current_page.setData({
+    is_more_goods: true
+  })
+  // 清空数组标志
   current_page.data.is_clear_list = true;
+  // 返回顶部并开启加载动画
   current_page.setData({
     'scroll_goods_list.top': 0,
     is_hidden_top_loading: false

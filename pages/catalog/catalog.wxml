@@ -17,7 +17,7 @@
   <!-- 头部   end -->
 
   <!-- 商品区域   start -->
-  <scroll-view scroll-y="{{true}}" class="scroll_box js_scroll_box" enable-back-to-top="{{true}}" lower-threshold="30px" bindscroll="scrollGoodsList" scroll-top="{{scroll_goods_list.top}}" scroll-with-animation="{{true}}">
+  <scroll-view scroll-y="{{true}}" class="scroll_box js_scroll_box" enable-back-to-top="{{true}}" bindscroll="scrollGoodsList" lower-threshold="1px" bindscrolltolower="scrollLowerEvent" scroll-top="{{scroll_goods_list.top}}" scroll-with-animation="{{true}}">
     <view hidden="{{is_hidden_top_loading}}" class="top_loading">加载中...</view>
     <!-- 商品区域   start -->
     <view class="goods_list">
@@ -65,6 +65,8 @@
     <view class="loading_box" hidden="{{is_hidden_loading}}">
       <image class="loading" src="../images/loading.gif"></image>
     </view>
+    <!-- 没有更多了提示 -->
+    <view class="no_more" hidden="{{is_more_goods}}">没有更多了...</view>
   </scroll-view>
   <!-- 商品区域   end -->
   <!-- 返回顶部按钮 -->
