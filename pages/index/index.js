@@ -83,7 +83,9 @@ Page({
     // 请求错误计数器
     error_count: 0,
     // 可以进行ajax请求标志
-    can_ajax: true
+    can_ajax: true,
+    // 更多商品标志
+    is_more_goods: true
   },
   onLoad() {
     var pages = getCurrentPages() //获取加载的页面
@@ -144,7 +146,13 @@ Page({
         is_hidden_loading: true
       })
     }
-   this.data.can_ajax = true; // 可以进行下一次ajax请求
+    // 显示没有更多商品
+    if (data.goods == null || data.goods.length < goods_obj['page_size']) {
+      this.setData({
+        is_more_goods: false
+      })
+    }
+    this.data.can_ajax = true; // 可以进行下一次ajax请求
   },
   // 关闭动画
   closeLoading: function() {
@@ -155,7 +163,7 @@ Page({
   // 底部上滑加载更多
   scrollLowerEvent: function() {
     // console.log('到底了');
-    if (this.data.can_ajax) {
+    if (this.data.can_ajax && this.is_more_goods) {
       this.setData({
         is_hidden_loading: false
       });

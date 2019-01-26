@@ -66,6 +66,8 @@
     <view class="loading_box" hidden="{{is_hidden_loading}}">
       <image class="loading" src="../images/loading.gif"></image>
     </view>
+    <!-- 没有更多了提示 -->
+    <view class="no_more" hidden="{{is_more_goods}}">没有更多了...</view>
   </scroll-view>
   <button class="to_top" hover="true" hover-class="to_top_hover" hidden="{{is_hidden_top}}" bindtap='scrollToTop'>
     <icon class="iconfont icon-xiangshang"></icon>

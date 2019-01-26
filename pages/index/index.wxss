@@ -67,7 +67,7 @@ page {
 .cid_box .cover {
   display: inline-block;
   width: 25%;
-  padding: 6px 0 8px 0 ;
+  padding: 6px 0 8px 0;
   background-color: #fff;
 }
 
@@ -348,4 +348,11 @@ page {
   border-radius: 50%;
   line-height: 38px;
   font-size: 16px;
+}
+
+.no_more {
+  padding: 5px 0 8px 0;
+  font-size: 14px;
+  color: #3f4964;
+  text-align: center;
 }
