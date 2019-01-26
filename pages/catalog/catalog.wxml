@@ -15,7 +15,7 @@
   <!-- 头部   end -->
 
   <!-- 商品区域   start -->
-  <scroll-view scroll-y="{{true}}" class="scroll_box js_scroll_box" enable-back-to-top="{{true}}" bindscroll="scrollGoodsList" lower-threshold="20" bindscrolltolower="scrollLowerEvent" scroll-top="{{scroll_goods_list.top}}" scroll-with-animation="{{true}}">
+  <scroll-view scroll-y="{{true}}" class="scroll_box js_scroll_box" enable-back-to-top="{{true}}" bindscroll="scrollGoodsList" lower-threshold="5px" bindscrolltolower="scrollLowerEvent" scroll-top="{{scroll_goods_list.top}}" scroll-with-animation="{{false}}">
     <view hidden="{{is_hidden_top_loading}}" class="top_loading">加载中...</view>
     <!-- 商品区域   start -->
     <view class="goods_list">
