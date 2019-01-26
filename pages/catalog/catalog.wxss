@@ -1,5 +1,5 @@
 /* pages/catalog/catalog.wxss */
-@import "../images/iconfont.wxss";
+@import "../images/font/iconfont.wxss";
 
 page {
   height: 100%;
