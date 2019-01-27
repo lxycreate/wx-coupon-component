@@ -54,7 +54,7 @@
           <!-- 文 -->
           <view class="goods_container">
             <view class="text_box">
-              <text class="goods_title">{{item.goods_title}}</text>
+              <text class="goods_title" data-id="{{item.goods_id}}" bindtap="jumpToDetail">{{item.goods_title}}</text>
               <view class="price_sale">
                 <text class="price">原价￥{{item.goods_price}}</text>
                 <text class="sale">销量 {{item.goods_sale}}</text>

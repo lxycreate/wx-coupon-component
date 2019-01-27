@@ -45,7 +45,15 @@ Page({
   init: function() {
     var pages = getCurrentPages() //获取加载的页面
     current_page = pages[pages.length - 1] //获取当前页面的对象
-  }
+  },
+  // 跳转详情页
+  jumpToDetail: function(e) {
+    var id = e.target.dataset.id;
+    var url = "../../pages/detail/detail?id=" + id;
+    wx.navigateTo({
+      url: url
+    })
+  },
 })
 
 // 获取商品详情
