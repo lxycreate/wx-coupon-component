@@ -82,6 +82,14 @@ page {
   border-radius: 5px;
 }
 
+.detail_box .tag .qiang {
+  background-color: #fa5319;
+}
+
+.detail_box .tag .ju {
+  background-color: #7144d5;
+}
+
 .detail_box .tag .gold {
   background-color: #efa21b;
 }

@@ -16,6 +16,8 @@
         </view>
         <text class="dsr">评分 {{goods_detail.dsr}}</text>
         <view class="tag">
+          <text wx:if="{{goods_detail.is_qiang==1}}" class='qiang'>淘抢购</text>
+          <text wx:if="{{goods_detail.is_ju==1}}" class='ju'>聚划算</text>
           <text wx:if="{{goods_detail.is_gold==1}}" class='gold'>金牌卖家</text>
           <text wx:if="{{goods_detail.is_hai==1}}" class='hai'>海淘</text>
           <text wx:if="{{goods_detail.is_yun==1}}" class='xian'>运费险</text>
@@ -46,8 +48,6 @@
           <!-- 图 -->
           <view class="goods_container">
             <view class="img_box">
-              <view wx:if="{{item.is_qiang==1}}" class="qiang">正在参加淘抢购</view>
-              <view wx:if="{{item.is_ju==1}}" class="ju">正在参加聚划算</view>
               <image src="{{item.goods_pic}}" lazy-load="{{true}}"></image>
             </view>
           </view>
