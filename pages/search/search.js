@@ -131,7 +131,7 @@ Page({
   },
   // 跳转详情页
   jumpToDetail: function(e) {
-    var id = e.target.dataset.id;
+    var id = e.currentTarget.dataset.id;
     var url = "../../pages/detail/detail?id=" + id;
     wx.navigateTo({
       url: url

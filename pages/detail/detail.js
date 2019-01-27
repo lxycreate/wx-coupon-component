@@ -37,6 +37,7 @@ Page({
       title: "商品详情"
     });
     goods_id = options.id;
+    console.log(goods_id);
     this.init();
   },
   onReady: function() {
@@ -48,7 +49,7 @@ Page({
   },
   // 跳转详情页
   jumpToDetail: function(e) {
-    var id = e.target.dataset.id;
+    var id = e.currentTarget.dataset.id;
     var url = "../../pages/detail/detail?id=" + id;
     wx.navigateTo({
       url: url

@@ -285,8 +285,21 @@ page {
   padding: 5px 5px 5px 1px;
 }
 
-.goods_list .goods_item .goods_container .text_box .goods_title {
+.goods_list .goods_item .goods_container .text_box .goods_title_box {
   display: block;
+  font-size: 0;
+}
+
+.goods_list .goods_item .goods_container .text_box .goods_title_box image {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 3px;
+}
+
+.goods_list .goods_item .goods_container .text_box .goods_title {
+  display: inline-block;
+  width: calc(100% - 18px);
   margin-top: 2px;
   font-size: 14px;
   text-align: left;
