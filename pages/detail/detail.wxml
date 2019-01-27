@@ -45,7 +45,7 @@
       </view>
       <!-- 文   end -->
     </view>
-    <text class="rec_title">相关推荐</text>
+    <text class="rec_title">猜你喜欢</text>
     <!-- 商品区域   start -->
     <view class="goods_list">
       <view class="goods" wx:for="{{goods_list}}" wx:key="item">

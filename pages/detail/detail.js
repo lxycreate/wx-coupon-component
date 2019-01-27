@@ -37,7 +37,6 @@ Page({
       title: "商品详情"
     });
     goods_id = options.id;
-    console.log(goods_id);
     this.init();
   },
   onReady: function() {
@@ -69,7 +68,6 @@ function getGoodsDetail(callback) {
       'content-type': 'application/json'
     },
     success: function(res) {
-      console.log(res);
       // 错误次数清零
       current_page.data.error_count = 0;
       if (res != null && res.data != null) {
