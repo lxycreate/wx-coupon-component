@@ -336,7 +336,9 @@ Page({
 // 初始化goods_obj
 function initGoodsObj() {
   goods_obj = {};
-  goods_obj['goods_cid'] = cid;
+  if (cid != '0') {
+    goods_obj['goods_cid'] = cid;
+  }
   goods_obj['page_num'] = 1;
   goods_obj['page_size'] = 10;
   // goods_obj['is_ju'] = 1;
