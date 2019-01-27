@@ -80,7 +80,7 @@
                   </text>
                 </view>
                 <view class="box right">
-                  <text>
+                  <text data-url="{{item.coupon_url}}" bindtap="jumpToCoupon">
                     <text class="the_title">领券</text>
                   <text class="the_value">￥{{item.coupon_price}}</text>
                   </text>

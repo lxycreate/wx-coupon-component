@@ -55,7 +55,7 @@
                   </text>
                 </view>
                 <view class="box right">
-                  <text>
+                  <text data-url="{{item.coupon_url}}" bindtap="jumpToCoupon">
                     <text class="the_title">领券</text>
                   <text class="the_value">￥{{item.coupon_price}}</text>
                   </text>
@@ -74,9 +74,14 @@
     </view>
     <!-- 没有更多了提示 -->
     <view class="no_more" hidden="{{is_more_goods}}">没有更多了...</view>
-    <!-- <view class="filter_box" hidden="{{is_hidden_loading}}"></view> -->
   </scroll-view>
+  <!-- 返回顶部按钮   start -->
   <button class="to_top" hover="true" hover-class="to_top_hover" hidden="{{is_hidden_top}}" bindtap='scrollToTop'>
     <icon class="iconfont icon-xiangshang"></icon>
   </button>
+  <!-- 返回顶部按钮   end -->
+  <!-- 领券  start -->
+  <!-- <view class="coupon_shade"></view>
+  <view class="coupom_box"></view> -->
+  <!-- 领券  end -->
 </view>

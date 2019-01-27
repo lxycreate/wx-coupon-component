@@ -54,6 +54,17 @@ Page({
       url: url
     })
   },
+  // 跳转到领券
+  jumpToCoupon: function(e) {
+    var coupon = e.currentTarget.dataset.url.split("?");
+    var temp = coupon[1].split('&');
+    var sellerId = temp[0].split('=')[1];
+    var activityId = temp[1].split('=')[1];
+    var url = "../../pages/coupon/coupon?sellerId=" + sellerId + "&activityId=" + activityId;
+    wx.navigateTo({
+      url: url
+    })
+  }
 })
 
 // 获取商品详情

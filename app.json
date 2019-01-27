@@ -4,7 +4,8 @@
     "pages/search/search",
     "pages/catalog/catalog",
     "pages/logs/logs",
-    "pages/detail/detail"
+    "pages/detail/detail",
+      "pages/coupon/coupon"
   ],
   "window": {
     "backgroundTextStyle": "light",
