@@ -33,9 +33,25 @@ page {
   padding: 0 6px;
 }
 
-.detail_box .text_box .title {
+.detail_box .text_box .title_box {
   display: block;
+  font-size: 0;
+}
+
+.detail_box .text_box .title_box image {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+  margin-top: 3px;
+  vertical-align: top;
+}
+
+.detail_box .text_box .title {
+  display: inline-block;
+  width: calc(100% - 20px);
   font-size: 14px;
+  vertical-align: top;
 }
 
 .detail_box .text_box .price_sale {

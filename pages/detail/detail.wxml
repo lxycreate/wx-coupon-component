@@ -9,7 +9,12 @@
       <!-- 图   end -->
       <!-- 文   start -->
       <view class="text_box">
-        <text class="title">{{goods_detail.goods_title}}</text>
+        <view class="title_box">
+          <image wx:if="{{goods_detail.is_tmall==0}}" src="../images/taobao.png"></image>
+          <image wx:if="{{goods_detail.is_tmall==1}}" src="../images/tmall.png"></image>
+          <text class="title">{{goods_detail.goods_title}}</text>
+        </view>
+
         <view class="price_sale">
           <text class="price">原价￥{{goods_detail.goods_price}}</text>
           <text class="sale">销量 {{goods_detail.goods_sale}}</text>
