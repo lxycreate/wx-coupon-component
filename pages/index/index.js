@@ -124,6 +124,14 @@ Page({
       url: url
     })
   },
+   // 跳转详情页
+  jumpToDetail: function(e) {
+    var id = e.target.dataset.id;
+    var url = "../../pages/detail/detail?id=" + id;
+    wx.navigateTo({
+      url: url
+    })
+  },
   // 获取商品
   getGoods: function(callback) {
     wx.request({

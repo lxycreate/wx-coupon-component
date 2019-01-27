@@ -129,6 +129,14 @@ Page({
       addProperty('word', this.data.search_word);
     }
   },
+  // 跳转详情页
+  jumpToDetail: function(e) {
+    var id = e.target.dataset.id;
+    var url = "../../pages/detail/detail?id=" + id;
+    wx.navigateTo({
+      url: url
+    })
+  },
   // 改变排序方式
   changeSortWay: function(event) {
     var temp = this.data.sort_way;

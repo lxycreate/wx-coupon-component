@@ -239,6 +239,14 @@ Page({
       })
     }
   },
+  // 跳转详情页
+  jumpToDetail: function(e) {
+    var id = e.target.dataset.id;
+    var url = "../../pages/detail/detail?id=" + id;
+    wx.navigateTo({
+      url: url
+    })
+  },
   // 滑动到底部加载更多
   scrollLowerEvent: function() {
     loadNextPage();
@@ -370,7 +378,7 @@ function getGoods(callback) {
       console.log('请求错误' + res);
       closeLoading();
     }
-  });
+  })
 }
 
 // 解析商品列表
