@@ -101,7 +101,7 @@ page {
   position: fixed;
   /* display: none; */
   z-index: 99;
-  top: 35px;
+  top: 70px;
   left: 100%;
   margin-left: -300px;
   width: 300px;
@@ -222,7 +222,7 @@ page {
   position: fixed;
   /* display: none; */
   z-index: 2;
-  top: 35px;
+  top: 70px;
   left: 0;
   width: 100%;
   height: calc(100% - 70px);

@@ -110,10 +110,16 @@ Page({
     goods_obj['page_size'] = 10;
     goods_obj['sort'] = 'goods_sale desc';
   },
+  // 跳转到搜索页
+  jumpToSearch: function() {
+    wx.navigateTo({
+      url: "../../pages/search/search"
+    })
+  },
   // 页面跳转
   jumpToCatalog: function(event) {
     var value = event.currentTarget.dataset.value;
-    var url = '../../pages/catalog/catalog?cid=' + value+'&title='+this.data.cid_btns[value].name;
+    var url = '../../pages/catalog/catalog?cid=' + value + '&title=' + this.data.cid_btns[value].name;
     wx.navigateTo({
       url: url
     })
