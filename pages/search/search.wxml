@@ -62,8 +62,8 @@
           <view class="goods_container">
             <view class="text_box">
               <view class="goods_title_box" data-id="{{item.goods_id}}" bindtap="jumpToDetail">
-                <image wx:if="{{item.is_tmall==0}}" src="../images/taobao.png" lazy-load="{{true}}"></image>
-                <image wx:if="{{item.is_tmall==1}}" src="../images/tmall.png" lazy-load="{{true}}"></image>
+                <image wx:if="{{item.is_tmall==0}}" src="../../images/taobao.png" lazy-load="{{true}}"></image>
+                <image wx:if="{{item.is_tmall==1}}" src="../../images/tmall.png" lazy-load="{{true}}"></image>
                 <text class="goods_title">{{item.goods_title}}</text>
               </view>
               <view class="price_sale">
@@ -96,7 +96,7 @@
 
     <!-- 加载动画 -->
     <view class="loading_box" hidden="{{is_hidden_loading}}">
-      <image class="loading" lazy-load="{{true}}" src="../images/loading.gif"></image>
+      <image class="loading" lazy-load="{{true}}" src="../../images/loading.gif"></image>
     </view>
     <!-- 没有更多了提示 -->
     <view class="no_more" hidden="{{is_more_goods}}">没有更多了...</view>

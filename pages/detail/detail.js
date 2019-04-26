@@ -12,7 +12,7 @@ Page({
       coupon_url: "",
       dsr: 0,
       goods_id: "0",
-      goods_pic: "../images/default.png",
+      goods_pic: "../../images/default.png",
       goods_price: 0,
       goods_sale: 0,
       goods_title: "",
