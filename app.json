@@ -5,12 +5,13 @@
     "pages/catalog/catalog",
     "pages/logs/logs",
     "pages/detail/detail",
-      "pages/coupon/coupon"
+    "pages/coupon/coupon"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "微淘券",
     "navigationBarTextStyle": "black"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

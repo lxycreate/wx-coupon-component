@@ -1,5 +1,4 @@
 /* pages/search/search.wxss */
-@import "../images/font/iconfont.wxss";
 
 page {
   height: 100%;
