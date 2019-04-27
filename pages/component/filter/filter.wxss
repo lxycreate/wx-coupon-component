@@ -1,0 +1,189 @@
+/* pages/component/filter/filter.wxss */
+
+.header .btn_box {
+  width: 100%;
+  height: 35px;
+  font-size: 0;
+  background-color: #fff;
+}
+
+.header .btn_box .btn {
+  display: inline-block;
+  width: 25%;
+  height: 35px;
+  font-size: 14px;
+  line-height: 35px;
+  color: #3f4964;
+  text-align: center;
+  background-color: #fff;
+}
+
+.header .btn_box .btn::after {
+  border: none;
+}
+
+.header .btn_box .btn .icon_box {
+  display: inline-block;
+  height: 35px;
+  margin-left: -3px;
+  vertical-align: top;
+}
+
+.header .btn_box .btn .icon_box image {
+  display: block;
+  width: 9px;
+  height: 9px;
+  margin-top: 11px;
+}
+
+.header .btn_box .btn .icon_box icon {
+  position: absolute;
+  display: block;
+  width: 14px;
+  height: 14px;
+  font-size: 8px;
+}
+
+.header .btn_box .btn .icon_box .asc {
+  margin-top: -5px;
+}
+
+.btn_selected {
+  color: #ef5564 !important;
+}
+
+/* 筛选弹窗   start */
+
+.screen_box {
+  position: fixed;
+  /* display: none; */
+  z-index: 99;
+  top: 70px;
+  left: 100%;
+  margin-left: -300px;
+  width: 300px;
+  height: calc(100% - 70px);
+  padding-bottom: 20px;
+  border-top: 1px solid #f6f6f6;
+  background-color: #fff;
+}
+
+.screen_box .title {
+  display: block;
+  margin: 15px 0 0 15px;
+  color: #3f4964;
+  font-size: 14px;
+}
+
+.screen_box .screen_btns {
+  text-align: left;
+  font-size: 0;
+}
+
+.screen_box .screen_btns .cover {
+  width: 80px;
+  display: inline-block;
+  font-size: 0;
+  margin: 15px 0 0 15px;
+  text-align: center;
+  vertical-align: top;
+}
+
+.screen_box .screen_btns .cover .btn {
+  display: inline-block;
+  width: 80px;
+  height: 30px;
+  padding: 0;
+  text-align: center;
+  font-size: 14px;
+  line-height: 30px;
+  color: #3f4964;
+  background-color: #eee;
+}
+
+.screen_box .screen_btns .cover .btn::after {
+  border: none;
+}
+
+.screen_box .sale input {
+  width: 80px;
+  height: 30px;
+  min-height: 30px;
+  margin: 15px 0 0 15px;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 5px;
+  background-color: #eee;
+}
+
+.screen_selected {
+  color: #fff !important;
+  background-color: #ef5564 !important;
+}
+
+.screen_box .price input {
+  display: inline-block;
+  width: 80px;
+  height: 30px;
+  min-height: 30px;
+  margin: 15px 0 0 15px;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 14px;
+  line-height: 30px;
+  background-color: #eee;
+}
+
+.screen_box .confirm_btns {
+  position: absolute;
+  top: 100%;
+  left: 100%;
+  width: 200px;
+  height: 30px;
+  text-align: right;
+  margin: -60px 0 0 -200px;
+}
+
+.screen_box .confirm_btns .btn {
+  display: inline-block;
+  width: 80px;
+  height: 30px;
+  margin-right: 15px;
+  line-height: 30px;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+}
+
+.screen_box .confirm_btns .btn::after {
+  border: none;
+}
+
+.screen_box .confirm_btns .clear {
+  background-color: #666;
+}
+
+.screen_box .confirm_btns .confirm {
+  background-color: #ef5564;
+}
+
+.the_clear {
+  background-color: #555 !important;
+}
+
+.the_confirm {
+  background-color: #e63140 !important;
+}
+
+.shade {
+  position: fixed;
+  /* display: none; */
+  z-index: 2;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 70px);
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* 筛选弹窗   end */

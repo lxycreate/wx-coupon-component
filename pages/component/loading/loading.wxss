@@ -1,0 +1,25 @@
+/* pages/component/loading/loading.wxss */
+
+/* loading   start */
+
+.loading_box {
+  height: 30px;
+  padding: 3px 0;
+  background-color: #fff;
+}
+
+.loading_box .loading {
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin: auto;
+}
+
+/* loading   end */
+
+.no_more {
+  padding: 5px 0 8px 0;
+  font-size: 14px;
+  color: #3f4964;
+  text-align: center;
+}

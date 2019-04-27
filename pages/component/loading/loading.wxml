@@ -1,0 +1,7 @@
+<!--pages/component/loading/loading.wxml-->
+<!-- 加载动画 -->
+<view class="loading_box" hidden="{{is_hidden_loading}}">
+  <image class="loading" lazy-load="{{true}}" src="../../images/loading.gif"></image>
+</view>
+ <!-- 没有更多了提示 -->
+<view class="no_more" hidden="{{is_more_goods}}">没有更多了...</view>

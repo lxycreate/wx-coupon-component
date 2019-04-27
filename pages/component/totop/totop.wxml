@@ -1,0 +1,7 @@
+<!--pages/component/totop/totop.wxml-->
+
+<!-- 返回顶部按钮   start -->
+<button class="to_top" hover="true" hover-class="to_top_hover" hidden="{{is_hidden_top}}" bindtap='scrollToTop'>
+  <icon class="iconfont icon-xiangshang"></icon>
+</button>
+<!-- 返回顶部按钮   end -->

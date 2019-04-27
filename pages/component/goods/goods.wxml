@@ -1,0 +1,48 @@
+   <!-- 商品区域   start -->
+    <view class="goods_list">
+      <view class="goods" wx:for="{{goods_list}}" wx:key="">
+        <view class="goods_item">
+          <!-- 图 -->
+          <view class="goods_container">
+            <view class="img_box">
+              <view wx:if="{{item.is_qiang==1}}" class="qiang">正在参加淘抢购</view>
+              <view wx:if="{{item.is_ju==1}}" class="ju">正在参加聚划算</view>
+              <image src="{{item.goods_pic}}" lazy-load="{{true}}"></image>
+            </view>
+          </view>
+          <!-- 文 -->
+          <view class="goods_container">
+            <view class="text_box">
+              <view class="goods_title_box" data-id="{{item.goods_id}}" bindtap="jumpToDetail">
+                <image wx:if="{{item.is_tmall==0}}" src="../../images/taobao.png" lazy-load="{{true}}"></image>
+                <image wx:if="{{item.is_tmall==1}}" src="../../images/tmall.png" lazy-load="{{true}}"></image>
+                <text class="goods_title">{{item.goods_title}}</text>
+              </view>
+              <view class="price_sale">
+                <text class="price">原价￥{{item.goods_price}}</text>
+                <text class="sale">销量 {{item.goods_sale}}</text>
+              </view>
+              <!-- <text class="dsr">评分 4.8</text> -->
+              <!--  -->
+              <view class="price_coupon">
+                <view class="box left">
+                  <text>
+                     <text class="the_title">券后</text>
+                  <text class="the_value">￥{{item.after_coupon}}</text>
+                  </text>
+                </view>
+                <view class="box right">
+                  <text data-url="{{item.coupon_url}}" bindtap="jumpToCoupon">
+                    <text class="the_title">领券</text>
+                  <text class="the_value">￥{{item.coupon_price}}</text>
+                  </text>
+                </view>
+              </view>
+            </view>
+            <!-- text_box  end -->
+          </view>
+          <!--第二container  end-->
+        </view>
+      </view>
+    </view>
+    <!-- 商品区域  end -->

@@ -1,0 +1,35 @@
+<!--pages/component/filter/filter.wxml-->
+<view class="btn_box">
+  <button class="btn {{item.is_select?'btn_selected':''}}" wx:for="{{filter_btns}}" wx:key="index" bindtap="changeSortWay" data-index="{{index}}">
+    {{item.name}}
+    <view wx:if="{{index==2}}" class="icon_box">
+      <icon wx:if="{{is_price_asc}}" class="iconfont icon-xiangshang1 asc"></icon>
+      <icon wx:if="{{is_price_desc}}" class="iconfont icon-xiangxia desc"></icon>
+    </view>
+  </button>
+</view>
+<!-- 筛选弹窗   start -->
+<view class="screen_box" hidden="{{is_hidden_screen_box}}">
+  <text class="title">筛选</text>
+  <view class="screen_btns">
+    <view class="cover" wx:for="{{screen_btns}}" wx:key="index">
+      <button class="btn {{item.is_select?'screen_selected':''}}" data-index="{{item.index}}" bindtap="changeScreen">{{item.name}}</button>
+    </view>
+  </view>
+  <view class="sale">
+    <text class="title">销量</text>
+    <input type="number" bindinput='getInputSale' value="{{goods_sale}}" adjust-position="{{false}}">
+    </input>
+  </view>
+  <view class="price">
+    <text class="title">价格</text>
+    <input type="number" bindinput="getLowPrice" adjust-position="{{false}}" value="{{low_price}}" placeholder="最低价"></input>
+    <input type="number" bindinput="getHighPrice" adjust-position="{{false}}" value="{{high_price}}" placeholder="最高价"></input>
+  </view>
+  <view class="confirm_btns">
+    <button class="btn clear" hover-class='the_clear' bindtap="clear">重置</button>
+    <button class="btn confirm" hover-class='the_confirm' bindtap='confirm'>确认</button>
+  </view>
+</view>
+<view class="shade" hidden="{{is_hidden_screen_box}}" bindtap='hideScreenBox'></view>
+<!-- 筛选弹窗   end -->
