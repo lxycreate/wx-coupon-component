@@ -1,6 +1,8 @@
 // pages/detail/detail.js
 // 当前页面对象
 var current_page;
+// 引入通用方法
+var util = require('../../utils/util.js');
 var goods_id;
 Page({
   data: {
@@ -43,16 +45,7 @@ Page({
     getGoodsDetail(parseData);
   },
   init: function() {
-    var pages = getCurrentPages() //获取加载的页面
-    current_page = pages[pages.length - 1] //获取当前页面的对象
-  },
-  // 跳转详情页
-  jumpToDetail: function(e) {
-    var id = e.currentTarget.dataset.id;
-    var url = "../../pages/detail/detail?id=" + id;
-    wx.navigateTo({
-      url: url
-    })
+    current_page = util.getCurrentPage();
   },
   // 跳转到领券
   jumpToCoupon: function(e) {
@@ -105,5 +98,4 @@ function parseData(data) {
       goods_list: data.goods_list
     })
   }
-
 }

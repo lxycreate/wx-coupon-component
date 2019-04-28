@@ -1,6 +1,4 @@
 /**app.wxss**/
 @import "iconfont/iconfont.wxss";
-@import "pages/component/goods/goods.wxss";
-@import "pages/component/filter/filter.wxss";
 @import "pages/component/loading/loading.wxss";
 @import "pages/component/totop/totop.wxss";
