@@ -1,9 +1,6 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
-// 当前页面对象
-var current_page;
 // 引入通用方法
 var util = require('../../utils/util.js');
 // 页面
@@ -90,12 +87,11 @@ Page({
     is_more_goods: true
   },
   onLoad() {
-    current_page = util.getCurrentPage();
+    var current_page = util.getCurrentPage();
     var query = wx.createSelectorQuery();
     query.select('.js_scroll_box').boundingClientRect()
     query.exec(function(res) {
       current_page.data.scroll_goods_list.height = res[0].height;
-      console.log(current_page.data.scroll_goods_list.height);
     })
   },
   // 页面渲染完成
@@ -128,18 +124,9 @@ Page({
 
   // 底部上滑加载更多
   scrollLowerEvent: function() {
-    if (this.data.can_ajax && this.data.is_more_goods) {
-      this.data.can_ajax = false;
-      this.setData({
-        is_hidden_loading: false
-      });
-      var num = this.data.goods_obj['page_num'];
-      this.data.goods_obj['page_num'] = num + 1;
-      setTimeout(function() {
-        util.getGoods(util.parseGoodsList)
-      }, 600)
-    }
+    util.loadNextPage();
   },
+  
   // 商品列表滚动事件
   scrollGoodsList: function(event) {
     if (event.detail.scrollTop > this.data.scroll_goods_list.height && this.data.is_hidden_top) {

@@ -143,4 +143,5 @@ module.exports = {
   getGoods: getGoods,
   parseGoodsList: parseGoodsList,
   closeLoading: closeLoading,
+
 }

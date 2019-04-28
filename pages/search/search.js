@@ -149,7 +149,7 @@ Page({
   },
   // 滑动到底部加载更多
   scrollLowerEvent: function() {
-    loadNextPage();
+    util.loadNextPage();
   },
   // 回到顶部
   scrollToTop: function() {
