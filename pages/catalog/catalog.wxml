@@ -3,7 +3,7 @@
   <!-- 头部   start -->
   <view class='header'>
     <!-- 引入筛选横条 -->
-    <include src="../component/filter/filter.wxml" />
+    <filter goods_obj="{{goods_obj}}"filter_btns="{{filter_btns}}" is_price_asc="{{ is_price_asc}}" is_price_desc="{{is_price_desc}}" is_hidden_screen_box="{{is_hidden_screen_box}}" screen_btns="{{screen_btns}}" goods_sale="{{goods_sale}}" low_price="{{low_price}}" high_price="{{high_price}}"></filter>
   </view>
   <!-- 头部   end -->
 
@@ -12,13 +12,13 @@
     <view hidden="{{is_hidden_top_loading}}" class="top_loading">加载中...</view>
 
     <!-- 引入商品列表组件 -->
-    <include src="../component/goods/goods.wxml" />
-     <!-- 引入加载动画组件 -->
+    <goods goods_list="{{goods_list}}"></goods>
+    <!-- 引入加载动画组件 -->
     <include src="../component/loading/loading.wxml" />
 
   </scroll-view>
   <!-- 商品区域   end -->
 
- <!-- 引入返回顶部组件 -->
+  <!-- 引入返回顶部组件 -->
   <include src="../component/totop/totop.wxml" />
 </view>

@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "goods": "../component/goods/goods",
+    "filter": "../component/filter/filter"
+  }
 }

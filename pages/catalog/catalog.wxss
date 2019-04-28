@@ -23,7 +23,7 @@ page {
   left: 100%;
   margin-left: -300px;
   width: 300px;
-  height: calc(100% - 35px);
+  height: calc(100% - 35px) !important;
   padding-bottom: 20px;
   border-top: 1px solid #f6f6f6;
   background-color: #fff;
@@ -35,7 +35,7 @@ page {
   top: 35px;
   left: 0;
   width: 100%;
-  height: calc(100% - 35px);
+  height: calc(100% - 35px) !important;
   background-color: rgba(0, 0, 0, 0.3);
 }
 

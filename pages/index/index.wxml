@@ -22,7 +22,7 @@
     <text class="title">商品推荐</text>
 
     <!-- 引入商品列表组件 -->
-    <include src="../component/goods/goods.wxml" />
+    <goods goods_list="{{goods_list}}"></goods>
     <!-- 引入加载动画组件 -->
     <include src="../component/loading/loading.wxml" />
 

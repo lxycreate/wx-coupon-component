@@ -8,6 +8,7 @@ var cid = '';
 // 页面
 Page({
   data: {
+    goods_obj: goods_obj,
     filter_btns: [{
         name: '综合',
         index: 0,
@@ -247,7 +248,7 @@ Page({
       url: url
     })
   },
-   // 跳转到领券
+  // 跳转到领券
   jumpToCoupon: function(e) {
     var coupon = e.currentTarget.dataset.url.split("?");
     var temp = coupon[1].split('&');

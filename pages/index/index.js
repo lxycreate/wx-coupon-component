@@ -1,13 +1,15 @@
 //index.js
 //获取应用实例
 const app = getApp()
-// ajax参数
-var goods_obj = {};
+
 // 当前页面对象
 var current_page;
+// 引入通用方法
+var util = require('../../utils/util.js');
 // 页面
 Page({
   data: {
+    goods_obj:{},
     // 目录跳转按钮
     cid_btns: [{
       name: '全部',
@@ -101,14 +103,15 @@ Page({
   onReady() {
     this.initGoodsObj();
     setTimeout(function() {
-      current_page.getGoods(current_page.parseGoodsList);
+      // current_page.getGoods(current_page.parseGoodsList);
+      util.getGoods(current_page,util.parseGoodsList);
     }, 400)
   },
   // 初始化goods_obj
   initGoodsObj: function() {
-    goods_obj['page_num'] = 1;
-    goods_obj['page_size'] = 10;
-    goods_obj['sort'] = 'goods_sale desc';
+    this.data.goods_obj['page_num'] = 1;
+    this.data.goods_obj['page_size'] = 10;
+    this.data.goods_obj['sort'] = 'goods_sale desc';
   },
   // 跳转到搜索页
   jumpToSearch: function() {
@@ -116,79 +119,12 @@ Page({
       url: "../../pages/search/search"
     })
   },
-  // 页面跳转
+  // 页面跳转到不同目录页面
   jumpToCatalog: function(event) {
     var value = event.currentTarget.dataset.value;
     var url = '../../pages/catalog/catalog?cid=' + value + '&title=' + this.data.cid_btns[value].name;
     wx.navigateTo({
       url: url
-    })
-  },
-  // 跳转详情页
-  jumpToDetail: function(e) {
-    var id = e.currentTarget.dataset.id;
-    var url = "../../pages/detail/detail?id=" + id;
-    wx.navigateTo({
-      url: url
-    })
-  },
-  // 跳转到领券
-  jumpToCoupon: function(e) {
-    var coupon = e.currentTarget.dataset.url.split("?");
-    var temp = coupon[1].split('&');
-    var sellerId = temp[0].split('=')[1];
-    var activityId = temp[1].split('=')[1];
-    var url = "../../pages/coupon/coupon?sellerId=" + sellerId + "&activityId=" + activityId;
-    wx.navigateTo({
-      url: url
-    })
-  },
-  // 获取商品
-  getGoods: function(callback) {
-    wx.request({
-      url: 'http://localhost:8088/getGoods',
-      data: goods_obj,
-      method: 'get',
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function(res) {
-        current_page.data.error_count = 0;
-        if (res != null && res.data != null) {
-          callback(res.data);
-        }
-      },
-      fail: function(res) {
-        current_page.data.error_count++;
-        // 错误三次就无法请求
-        if (current_page.data.error_count >= 3) {
-          current_page.data.can_ajax = false;
-        }
-        console.log('请求错误' + res);
-        current_page.closeLoading();
-      }
-    });
-  },
-  // 解析商品列表
-  parseGoodsList: function(data) {
-    if (data.goods != null && data.goods.length > 0) {
-      this.setData({
-        goods_list: this.data.goods_list.concat(data.goods),
-        is_hidden_loading: true
-      })
-    }
-    // 显示没有更多商品
-    if (data.goods == null || data.goods.length < goods_obj['page_size']) {
-      this.setData({
-        is_more_goods: false
-      })
-    }
-    this.data.can_ajax = true; // 可以进行下一次ajax请求
-  },
-  // 关闭动画
-  closeLoading: function() {
-    this.setData({
-      is_hidden_loading: true
     })
   },
   // 底部上滑加载更多
@@ -198,10 +134,10 @@ Page({
       this.setData({
         is_hidden_loading: false
       });
-      var num = goods_obj['page_num'];
-      goods_obj['page_num'] = num + 1;
+      var num = this.data.goods_obj['page_num'];
+      this.data.goods_obj['page_num'] = num + 1;
       setTimeout(function() {
-        current_page.getGoods(current_page.parseGoodsList);
+        util.getGoods(current_page, util.parseGoodsList)
       }, 600)
     }
   },

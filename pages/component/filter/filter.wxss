@@ -1,13 +1,13 @@
 /* pages/component/filter/filter.wxss */
 
-.header .btn_box {
+ .btn_box {
   width: 100%;
   height: 35px;
   font-size: 0;
   background-color: #fff;
 }
 
-.header .btn_box .btn {
+ .btn_box .btn {
   display: inline-block;
   width: 25%;
   height: 35px;
@@ -18,25 +18,25 @@
   background-color: #fff;
 }
 
-.header .btn_box .btn::after {
+ .btn_box .btn::after {
   border: none;
 }
 
-.header .btn_box .btn .icon_box {
+ .btn_box .btn .icon_box {
   display: inline-block;
   height: 35px;
   margin-left: -3px;
   vertical-align: top;
 }
 
-.header .btn_box .btn .icon_box image {
+ .btn_box .btn .icon_box image {
   display: block;
   width: 9px;
   height: 9px;
   margin-top: 11px;
 }
 
-.header .btn_box .btn .icon_box icon {
+ .btn_box .btn .icon_box icon {
   position: absolute;
   display: block;
   width: 14px;
@@ -44,7 +44,7 @@
   font-size: 8px;
 }
 
-.header .btn_box .btn .icon_box .asc {
+ .btn_box .btn .icon_box .asc {
   margin-top: -5px;
 }
 

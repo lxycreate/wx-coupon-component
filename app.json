@@ -5,8 +5,7 @@
     "pages/catalog/catalog",
     "pages/logs/logs",
     "pages/detail/detail",
-    "pages/coupon/coupon",
-    "pages/component/goods/goods"
+    "pages/coupon/coupon"
   ],
   "window": {
     "backgroundTextStyle": "light",

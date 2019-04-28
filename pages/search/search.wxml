@@ -14,13 +14,13 @@
   <scroll-view scroll-y="{{true}}" class="scroll_box js_scroll_box" enable-back-to-top="{{true}}" bindscroll="scrollGoodsList" lower-threshold="5px" bindscrolltolower="scrollLowerEvent" scroll-top="{{scroll_goods_list.top}}" scroll-with-animation="{{false}}">
     <view hidden="{{is_hidden_top_loading}}" class="top_loading">加载中...</view>
     <!-- 引入商品列表组件 -->
-    <include src="../component/goods/goods.wxml" />
+    <goods goods_list="{{goods_list}}"></goods>
     <!-- 引入加载动画组件 -->
     <include src="../component/loading/loading.wxml" />
 
   </scroll-view>
   <!-- 商品区域   end -->
-  
- <!-- 引入返回顶部组件 -->
+
+  <!-- 引入返回顶部组件 -->
   <include src="../component/totop/totop.wxml" />
 </view>

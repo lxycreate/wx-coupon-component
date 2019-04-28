@@ -47,6 +47,6 @@
     </view>
     <text class="rec_title">猜你喜欢</text>
     <!-- 引入商品列表组件 -->
-    <include src="../component/goods/goods.wxml" />
+    <goods goods_list="{{goods_list}}"></goods>
   </scroll-view>
 </view>
