@@ -16,27 +16,9 @@ page {
 
 /* 筛选弹窗   start */
 
-.screen_box {
-  position: fixed;
-  z-index: 99;
-  top: 35px;
-  left: 100%;
-  margin-left: -300px;
-  width: 300px;
+.fix_filter_height {
+  top: 35px !important;
   height: calc(100% - 35px) !important;
-  padding-bottom: 20px;
-  border-top: 1px solid #f6f6f6;
-  background-color: #fff;
-}
-
-.shade {
-  position: fixed;
-  z-index: 2;
-  top: 35px;
-  left: 0;
-  width: 100%;
-  height: calc(100% - 35px) !important;
-  background-color: rgba(0, 0, 0, 0.3);
 }
 
 /* 筛选弹窗   end */
@@ -56,4 +38,5 @@ page {
   font-size: 14px;
   color: #3f4964;
 }
+
 /* 商品区域   end */

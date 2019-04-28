@@ -90,8 +90,7 @@ Page({
     is_more_goods: true
   },
   onLoad() {
-    var pages = getCurrentPages() //获取加载的页面
-    current_page = pages[pages.length - 1] //获取当前页面的对象
+    current_page = util.getCurrentPage();
     var query = wx.createSelectorQuery();
     query.select('.js_scroll_box').boundingClientRect()
     query.exec(function(res) {
@@ -103,8 +102,7 @@ Page({
   onReady() {
     this.initGoodsObj();
     setTimeout(function() {
-      // current_page.getGoods(current_page.parseGoodsList);
-      util.getGoods(current_page,util.parseGoodsList);
+      util.getGoods(util.parseGoodsList);
     }, 400)
   },
   // 初始化goods_obj
@@ -127,6 +125,7 @@ Page({
       url: url
     })
   },
+
   // 底部上滑加载更多
   scrollLowerEvent: function() {
     if (this.data.can_ajax && this.data.is_more_goods) {
@@ -137,7 +136,7 @@ Page({
       var num = this.data.goods_obj['page_num'];
       this.data.goods_obj['page_num'] = num + 1;
       setTimeout(function() {
-        util.getGoods(current_page, util.parseGoodsList)
+        util.getGoods(util.parseGoodsList)
       }, 600)
     }
   },

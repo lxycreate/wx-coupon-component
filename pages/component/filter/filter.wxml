@@ -9,7 +9,7 @@
   </button>
 </view>
 <!-- 筛选弹窗   start -->
-<view class="screen_box" hidden="{{is_hidden_screen_box}}">
+<view class="screen_box fix_filter_height" hidden="{{is_hidden_screen_box}}">
   <text class="title">筛选</text>
   <view class="screen_btns">
     <view class="cover" wx:for="{{screen_btns}}" wx:key="index">
@@ -31,5 +31,5 @@
     <button class="btn confirm" hover-class='the_confirm' bindtap='confirm'>确认</button>
   </view>
 </view>
-<view class="shade" hidden="{{is_hidden_screen_box}}" bindtap='hideScreenBox'></view>
+<view class="shade fix_filter_height" hidden="{{is_hidden_screen_box}}" bindtap='hideScreenBox'></view>
 <!-- 筛选弹窗   end -->

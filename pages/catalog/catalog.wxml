@@ -3,7 +3,8 @@
   <!-- 头部   start -->
   <view class='header'>
     <!-- 引入筛选横条 -->
-    <filter goods_obj="{{goods_obj}}"filter_btns="{{filter_btns}}" is_price_asc="{{ is_price_asc}}" is_price_desc="{{is_price_desc}}" is_hidden_screen_box="{{is_hidden_screen_box}}" screen_btns="{{screen_btns}}" goods_sale="{{goods_sale}}" low_price="{{low_price}}" high_price="{{high_price}}"></filter>
+    <filter current_page="{{current_page}}" goods_obj="{{goods_obj}}" filter_btns="{{filter_btns}}" is_price_asc="{{ is_price_asc}}" is_price_desc="{{is_price_desc}}" is_hidden_screen_box="{{is_hidden_screen_box}}" screen_btns="{{screen_btns}}" goods_sale="{{goods_sale}}"
+      low_price="{{low_price}}" high_price="{{high_price}}" fix_filter_height="fix_filter_height" iconfont="iconfont" icon-xiangshang1="icon-xiangshang1" icon-xiangxia="icon-xiangxia"></filter>
   </view>
   <!-- 头部   end -->
 
