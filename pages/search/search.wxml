@@ -3,7 +3,7 @@
   <!-- 头部   start -->
   <view class="header">
     <form class="search_box">
-      <input class="search_input" focus="{{true}}" bindconfirm="search" bindinput="getWord" placeholder="搜索"></input>
+      <input class="search_input" bindconfirm="search" bindinput="getWord" placeholder="搜索"></input>
     </form>
     <!-- 引入筛选横条 -->
     <filter current_page="{{current_page}}" goods_obj="{{goods_obj}}" filter_btns="{{filter_btns}}" is_price_asc="{{ is_price_asc}}" is_price_desc="{{is_price_desc}}" is_hidden_screen_box="{{is_hidden_screen_box}}" screen_btns="{{screen_btns}}" goods_sale="{{goods_sale}}"
@@ -23,5 +23,5 @@
   <!-- 商品区域   end -->
 
   <!-- 引入返回顶部组件 -->
-  <include src="../component/totop/totop.wxml" />
+ <totop is_hidden_top="{{is_hidden_top}}" iconfont="iconfont" icon-xiangshang="icon-xiangshang"> </totop>
 </view>

@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "goods": "../component/goods/goods",
-    "filter": "../component/filter/filter"
+    "filter": "../component/filter/filter",
+    "totop": "../component/totop/totop"
   }
 }

@@ -124,27 +124,14 @@ Page({
     this.data.goods_obj['page_num'] = 1;
     this.data.goods_obj['page_size'] = 10;
   },
+
   // 滚动事件
   scrollGoodsList: function(event) {
-    if (event.detail.scrollTop > this.data.scroll_goods_list.height && this.data.is_hidden_top) {
-      this.setData({
-        is_hidden_top: false
-      })
-    } else if (event.detail.scrollTop < this.data.scroll_goods_list.height && !this.data.is_hidden_top) {
-      this.setData({
-        is_hidden_top: true
-      })
-    }
+    util.scrollGoodsList(event);
   },
   // 滑动到底部加载更多
   scrollLowerEvent: function() {
     util.loadNextPage();
-  },
-  // 回到顶部
-  scrollToTop: function() {
-    this.setData({
-      "scroll_goods_list.top": 0
-    })
   },
 
   // 重置goods_obj

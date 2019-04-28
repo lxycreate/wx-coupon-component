@@ -137,15 +137,7 @@ Page({
   },
   // 滚动事件
   scrollGoodsList: function(event) {
-    if (event.detail.scrollTop > this.data.scroll_goods_list.height && this.data.is_hidden_top) {
-      this.setData({
-        is_hidden_top: false
-      })
-    } else if (event.detail.scrollTop < this.data.scroll_goods_list.height && !this.data.is_hidden_top) {
-      this.setData({
-        is_hidden_top: true
-      })
-    }
+    util.scrollGoodsList(event);
   },
   // 滑动到底部加载更多
   scrollLowerEvent: function() {

@@ -21,5 +21,5 @@
   <!-- 商品区域   end -->
 
   <!-- 引入返回顶部组件 -->
-  <include src="../component/totop/totop.wxml" />
+  <totop is_hidden_top="{{is_hidden_top}}" iconfont="iconfont" icon-xiangshang="icon-xiangshang"> </totop>
 </view>

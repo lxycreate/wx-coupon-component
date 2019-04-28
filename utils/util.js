@@ -135,6 +135,20 @@ function closeLoading() {
   }
 }
 
+// 滚动商品列表事件
+function scrollGoodsList(event) {
+  var obj = getCurrentPage();
+  if (event.detail.scrollTop > obj.data.scroll_goods_list.height && obj.data.is_hidden_top) {
+    obj.setData({
+      is_hidden_top: false
+    })
+  } else if (event.detail.scrollTop < obj.data.scroll_goods_list.height && !obj.data.is_hidden_top) {
+    obj.setData({
+      is_hidden_top: true
+    })
+  }
+}
+
 module.exports = {
   getCurrentPage: getCurrentPage,
   addProperty: addProperty,
@@ -143,5 +157,5 @@ module.exports = {
   getGoods: getGoods,
   parseGoodsList: parseGoodsList,
   closeLoading: closeLoading,
-
+  scrollGoodsList: scrollGoodsList
 }

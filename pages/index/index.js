@@ -129,21 +129,7 @@ Page({
   
   // 商品列表滚动事件
   scrollGoodsList: function(event) {
-    if (event.detail.scrollTop > this.data.scroll_goods_list.height && this.data.is_hidden_top) {
-      this.setData({
-        is_hidden_top: false
-      })
-    } else if (event.detail.scrollTop < this.data.scroll_goods_list.height && !this.data.is_hidden_top) {
-      this.setData({
-        is_hidden_top: true
-      })
-    }
-  },
-  // 回到顶部
-  scrollToTop: function() {
-    this.setData({
-      "scroll_goods_list.top": 0
-    })
+    util.scrollGoodsList(event);
   }
 
 });
