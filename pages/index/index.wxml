@@ -3,7 +3,7 @@
   <!-- 头部   start -->
   <view class="header">
     <form class="search_box">
-      <input class="search_input" bindfocus="jumpToSearch" placeholder="搜索"></input>
+      <input class="search_input" bindtap="jumpToSearch" placeholder="搜索"></input>
     </form>
   </view>
   <!-- 头部   end -->
