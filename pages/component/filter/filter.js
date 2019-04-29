@@ -2,35 +2,85 @@
 // 引入通用方法
 var util = require('../../../utils/util.js');
 Component({
-  externalClasses: ['fix_filter_height', 'iconfont', 'icon-xiangshang1','icon-xiangxia'],
+  externalClasses: ['fix_filter_height', 'iconfont', 'icon-xiangshang1', 'icon-xiangxia'],
   /**
    * 组件的属性列表
    */
   properties: {
-    // 按钮
-    filter_btns: Array,
-    // 是否升序
-    is_price_asc: Boolean,
-    // 是否降序
-    is_price_desc: Boolean,
-    // 是否隐藏过滤弹窗
-    is_hidden_screen_box: Boolean,
-    // 过滤弹窗中的按钮
-    screen_btns: Array,
-    // 商品销量
-    goods_sale: String,
-    // 最低价
-    low_price: String,
-    // 最高价
-    high_price: String
   },
 
   /**
    * 组件的初始数据
    */
   data: {
+    filter_btns: [{
+        name: '综合',
+        index: 0,
+        is_select: true
+      },
+      {
+        name: '销量',
+        index: 1,
+        is_select: false
+      }, {
+        name: '价格',
+        index: 2,
+        is_select: false
+      }, {
+        name: '筛选',
+        index: 3,
+        is_select: false
+      }
+    ],
+    // 筛选弹窗里的按钮
+    screen_btns: [{
+        name: '淘抢购', //名称   
+        index: 1, //必须使用自定义的index，否则监听filter_value的函数中出现异常出现-0
+        an_name: 'is_qiang', //搜索时的对应的参数名
+        is_select: false // 是否被选中
+      }, {
+        name: '聚划算',
+        index: 2,
+        an_name: 'is_ju',
+        is_select: false
+      },
+      {
+        name: '天猫',
+        index: 3,
+        an_name: 'is_tmall',
+        is_select: false
+      }, {
+        name: '金牌卖家',
+        index: 4,
+        an_name: 'is_gold',
+        is_select: false
+      }, {
+        name: '海淘',
+        index: 5,
+        an_name: 'is_hai',
+        is_select: false
+      },
+      {
+        name: '运费险',
+        index: 6,
+        an_name: 'is_yun',
+        is_select: false
+      }
+    ],
     // 当前排序方式
-    sort_way: 0
+    sort_way: 0,
+    // 隐藏升序排序图标
+    is_price_asc: false,
+    // 隐藏降序排序图标
+    is_price_desc: false,
+    // 是否隐藏筛选层
+    is_hidden_screen_box: true,
+    // 销量
+    goods_sale: '',
+    // 最低价
+    low_price: '',
+    // 最高价
+    high_price: ''
   },
 
   /**
@@ -109,25 +159,25 @@ Component({
       })
     },
     // 获取输入的销量值
-    getInputSale: function (e) {
+    getInputSale: function(e) {
       if (e.detail.value != '') {
         this.data.goods_sale = e.detail.value;
       }
     },
     // 获取最低价
-    getLowPrice: function (e) {
+    getLowPrice: function(e) {
       if (e.detail.value != '') {
         this.data.low_price = e.detail.value;
       }
     },
     // 获取最高价
-    getHighPrice: function (e) {
+    getHighPrice: function(e) {
       if (e.detail.value != '') {
         this.data.high_price = e.detail.value;
       }
     },
     // 筛选事件
-    changeScreen: function (event) {
+    changeScreen: function(event) {
       var obj = util.getCurrentPage();
       var index = event.currentTarget.dataset.index;
       var temp = index - 1;
@@ -159,13 +209,13 @@ Component({
       }
     },
     // 重置
-    clear: function () {
+    clear: function() {
       this.resetScreenBtns();
       this.resetInput();
       this.clearGoodsObj();
     },
     // 重置筛选按钮
-    resetScreenBtns: function () {
+    resetScreenBtns: function() {
       var s = '';
       for (var i = 0; i < 3; ++i) {
         s = 'screen_btns[' + i + '].is_select';
@@ -175,7 +225,7 @@ Component({
       }
     },
     // 重置input
-    resetInput: function () {
+    resetInput: function() {
       this.setData({
         goods_sale: '',
         low_price: '',
@@ -183,11 +233,11 @@ Component({
       })
     },
     // 清理goods_obj
-    clearGoodsObj: function () {
+    clearGoodsObj: function() {
       util.getCurrentPage().clearGoodsObj();
     },
     // 确认
-    confirm: function () {
+    confirm: function() {
       var obj = util.getCurrentPage();
       var flag = false;
       if (this.data.goods_sale != '') {
