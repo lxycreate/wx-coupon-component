@@ -18,6 +18,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    // 图片加载出错时设置默认图片
+    setDefaultPic:function(event){
+
+    },
     // 跳转到详情页
     jumpToDetail:function(e){
       var id = e.currentTarget.dataset.id;

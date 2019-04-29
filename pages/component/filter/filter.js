@@ -1,13 +1,21 @@
 // pages/component/filter/filter.js
+// 当前页面对象
+var current_page;
 // 引入通用方法
 var util = require('../../../utils/util.js');
 Component({
+  // 外部的类
   externalClasses: ['fix_filter_height', 'iconfont', 'icon-xiangshang1', 'icon-xiangxia'],
+  // 页面生命周期
+  pageLifetimes: {
+    show() {
+      current_page = util.getCurrentPage();
+    }
+  },
   /**
    * 组件的属性列表
    */
-  properties: {
-  },
+  properties: {},
 
   /**
    * 组件的初始数据
@@ -178,7 +186,6 @@ Component({
     },
     // 筛选事件
     changeScreen: function(event) {
-      var obj = util.getCurrentPage();
       var index = event.currentTarget.dataset.index;
       var temp = index - 1;
       var s = 'screen_btns[' + temp + '].is_select';
@@ -196,14 +203,14 @@ Component({
           this.setData({
             [s]: false
           });
-          delete obj.data.goods_obj['is_ju'];
+          delete current_page.data.goods_obj['is_ju'];
         }
         if (index == 2 && this.data.screen_btns[0].is_select) {
           s = 'screen_btns[0].is_select';
           this.setData({
             [s]: false
           });
-          delete obj.data.goods_obj['is_qiang'];
+          delete current_page.data.goods_obj['is_qiang'];
         }
         util.addProperty(this.data.screen_btns[index - 1].an_name, '1');
       }
@@ -238,32 +245,31 @@ Component({
     },
     // 确认
     confirm: function() {
-      var obj = util.getCurrentPage();
       var flag = false;
       if (this.data.goods_sale != '') {
-        obj.data.goods_obj['sale_num'] = this.data.goods_sale;
+        current_page.data.goods_obj['sale_num'] = this.data.goods_sale;
         flag = true;
       }
       if (this.data.low_price != '') {
-        obj.data.goods_obj['start_price'] = this.data.low_price;
+        current_page.data.goods_obj['start_price'] = this.data.low_price;
         flag = true;
       }
       if (this.data.high_price != '') {
-        obj.data.goods_obj['end_price'] = this.data.high_price;
+        current_page.data.goods_obj['end_price'] = this.data.high_price;
         flag = true;
       }
       if (this.data.low_price != '' && this.data.high_price != '' && this.data.high_price < this.data.low_price) {
         var low = this.data.high_price;
         var high = this.data.low_price;
-        obj.data.goods_obj['start_price'] = low;
-        obj.data.goods_obj['end_price'] = high;
+        current_page.data.goods_obj['start_price'] = low;
+        current_page.data.goods_obj['end_price'] = high;
         this.setData({
           low_price: low,
           high_price: high
         })
       }
       if (flag) {
-        var e = obj.data.goods_obj['page_num'];
+        var e = current_page.data.goods_obj['page_num'];
         util.addProperty('page_num', e);
       }
     }

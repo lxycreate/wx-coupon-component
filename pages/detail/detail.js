@@ -3,6 +3,7 @@
 var current_page;
 // 引入通用方法
 var util = require('../../utils/util.js');
+// 商品ID
 var goods_id;
 Page({
   data: {
@@ -39,13 +40,10 @@ Page({
       title: "商品详情"
     });
     goods_id = options.id;
-    this.init();
   },
   onReady: function() {
-    getGoodsDetail(parseData);
-  },
-  init: function() {
     current_page = util.getCurrentPage();
+    getGoodsDetail(parseData);
   },
   // 跳转到领券
   jumpToCoupon: function(e) {

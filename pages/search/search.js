@@ -1,6 +1,5 @@
 // pages/search/search.js
-// 页面对象
-var current_page;
+
 // 引入通用方法
 var util = require('../../utils/util.js');
 Page({
@@ -40,8 +39,7 @@ Page({
 
   onReady: function() {},
   init: function() {
-    var pages = getCurrentPages() //获取加载的页面
-    current_page = pages[pages.length - 1] //获取当前页面的对象
+    var current_page = util.getCurrentPage();
     var query = wx.createSelectorQuery();
     query.select('.js_scroll_box').boundingClientRect()
     query.exec(function(res) {
