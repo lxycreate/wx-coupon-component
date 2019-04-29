@@ -19,11 +19,11 @@ Component({
    */
   methods: {
     // 图片加载出错时设置默认图片
-    setDefaultPic:function(event){
-
+    setDefaultPic: function(event) {
+      console.log(event);
     },
     // 跳转到详情页
-    jumpToDetail:function(e){
+    jumpToDetail: function(e) {
       var id = e.currentTarget.dataset.id;
       var url = "../../pages/detail/detail?id=" + id;
       wx.navigateTo({
@@ -31,7 +31,7 @@ Component({
       })
     },
     // 跳转到领券
-    jumpToCoupon: function (e) {
+    jumpToCoupon: function(e) {
       var coupon = e.currentTarget.dataset.url.split("?");
       var temp = coupon[1].split('&');
       var sellerId = temp[0].split('=')[1];
