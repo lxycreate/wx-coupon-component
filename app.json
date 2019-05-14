@@ -10,7 +10,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "微淘券-精简",
+    "navigationBarTitleText": "微淘券",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json"
